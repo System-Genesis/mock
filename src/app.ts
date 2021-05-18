@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 app.use((req, _, next) => {
-  if (req.headers["authorization"] === "123") {
+  if (req.headers["authorization"] === process.env.AUTH) {
     next();
   } else {
     throw "unauthorized";
