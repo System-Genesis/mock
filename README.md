@@ -1,1 +1,1 @@
-Server that give fake data to simulate date for dev 
+Server that give fake data to simulate data for dev 
