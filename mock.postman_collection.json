@@ -1,0 +1,181 @@
+{
+	"variables": [],
+	"info": {
+		"name": "mock",
+		"_postman_id": "dfcfc478-79f5-d590-dfdd-0f62e0e3b049",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "generate",
+			"request": {
+				"url": "http://localhost:7700/api/generate",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getEightSocks",
+			"request": {
+				"url": "http://localhost:7700/api/getEightSocks",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getAkaTelephone",
+			"request": {
+				"url": "http://localhost:7700/api/getAkaTelephone",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getAkaEmployees",
+			"request": {
+				"url": "http://localhost:7700/api/getAkaEmployees",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getAkaImgMetaData",
+			"request": {
+				"url": "http://localhost:7700/api/getAkaImgMetaData",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getAD/s",
+			"request": {
+				"url": "http://localhost:7700/api/getAD/s",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getAD/NN",
+			"request": {
+				"url": "http://localhost:7700/api/getAD/NN",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getCity",
+			"request": {
+				"url": "http://localhost:7700/api/getCity",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getSf",
+			"request": {
+				"url": "http://localhost:7700/api/getSf",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "isAlive",
+			"request": {
+				"url": "http://localhost:7700/isAlive",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
