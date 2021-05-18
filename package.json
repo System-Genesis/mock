@@ -4,8 +4,10 @@
   "description": "",
   "main": "src/server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon"
+    "build": "tsc",
+    "prod": "npm run build & npm run docker",
+    "docker": "docker build -t mock . ",
+    "start": "node ./dist/server.js"
   },
   "repository": {
     "type": "git",
