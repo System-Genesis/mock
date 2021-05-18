@@ -12,3 +12,13 @@ coverage/
 
 # Package lock
 package-lock.json
+
+# data files 
+mockFiles/
+mockFiles/sf.json
+mockFiles/city.json
+mockFiles/eightSocks.json
+mockFiles/getAkaEmp.json
+mockFiles/getAkaPhone.json
+mockFiles/pictures.json
+mockFiles/AD.json

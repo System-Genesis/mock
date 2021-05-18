@@ -1,7 +1,7 @@
 import express = require("express");
 const router = express.Router();
 import { Request, Response } from "express";
-import gen from "../gen";
+import gen from "../gen/gen";
 import utils from "../utils";
 
 router.get("/generate", async (_: Request, res: Response) => {
