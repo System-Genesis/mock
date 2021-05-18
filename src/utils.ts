@@ -1,4 +1,4 @@
-import * as faker from "faker";
+import faker from "faker";
 import fs from "fs";
 
 function getRandomInt(min: number, max: number): number {

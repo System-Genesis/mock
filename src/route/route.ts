@@ -14,31 +14,31 @@ router.get("/getEightSocks", (_: Request, res: Response) => {
 });
 
 router.get("/getAkaTelephone", (_: Request, res: Response) => {
-  res.send(utils.readJson("../../mockFiles/getAkaPhone.json"));
+  res.send(utils.readJson("./mockFiles/getAkaPhone.json"));
 });
 
 router.get("/getAkaEmployees", (_: Request, res: Response) => {
-  res.send(utils.readJson("../../mockFiles/getAkaEmp.json"));
+  res.send(utils.readJson("./mockFiles/getAkaEmp.json"));
 });
 
 router.get("/getAkaImgMetaData", (_: Request, res: Response) => {
-  res.send(utils.readJson("../../mockFiles/pictures.json"));
+  res.send(utils.readJson("./mockFiles/pictures.json"));
 });
 
 router.get("/getAD/s", (_: Request, res: Response) => {
-  res.send(utils.readJson("../../mockFiles/AD.json"));
+  res.send(utils.readJson("./mockFiles/AD.json"));
 });
 
 router.get("/getAD/NN", (_: Request, res: Response) => {
-  res.send(utils.readJson("../../mockFiles/AD.json"));
+  res.send(utils.readJson("./mockFiles/AD.json"));
 });
 
 router.get("/getCity", (_: Request, res: Response) => {
-  res.send(utils.readJson("../../mockFiles/city.json"));
+  res.send(utils.readJson("./mockFiles/city.json"));
 });
 
 router.get("/getSf", (_: Request, res: Response) => {
-  res.send(utils.readJson("../../mockFiles/sf.json"));
+  res.send(utils.readJson("./mockFiles/sf.json"));
 });
 
 export default router;
