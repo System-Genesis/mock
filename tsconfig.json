@@ -20,5 +20,5 @@
     "outDir": "./dist/",
     "lib": ["ES2020.Promise"]
   },
-  "include": ["src/**/*", "src/server.ts"]
+  "include": ["src/**/*", "src/server.ts", "src/config"]
 }

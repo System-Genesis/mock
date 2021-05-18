@@ -1,30 +1,30 @@
 const fn = require("../../src/config/fieldNames");
 
 export default {
-  RANK: ["unknown", "rookie", "champion", "ultimate", "mega"],
+  RANK: ["unknown", "rookie", "champion", "ultimate", "mega"] as const,
 
-  CURRENT_UNIT: ["nitro unit", "jelly unit"],
-  ENTITY_TYPE: ["digimon", "agumon", "tamar"],
-  RESPONSIBILITY: ["none", "HR", "SO"],
-  STATUS: ["active", "inactive"],
+  CURRENT_UNIT: ["nitro unit", "jelly unit"] as const,
+  ENTITY_TYPE: ["digimon", "agumon", "tamar"] as const,
+  RESPONSIBILITY: ["none", "HR", "SO"] as const,
+  STATUS: ["active", "inactive"] as const,
 
   DOMAIN_MAP: [
-    ["rabiran.com", "rabiranuid"],
-    ["somedomain.com", "somedomainuid"],
-    ["jello.com", "jellouid"],
-    ["jello2.com", "jellouid"],
-    ["turtle.com", "turtle"],
-    ["donatelo.turtle.com", "turtle"],
-    ["rafael.turtle.com", "turtle"],
-    ["leonardo.com", "ddd"],
-  ],
+    ["rabiran.com", "rabiranuid"] as const,
+    ["somedomain.com", "somedomainuid"] as const,
+    ["jello.com", "jellouid"] as const,
+    ["jello2.com", "jellouid"] as const,
+    ["turtle.com", "turtle"] as const,
+    ["donatelo.turtle.com", "turtle"] as const,
+    ["rafael.turtle.com", "turtle"] as const,
+    ["leonardo.com", "ddd"] as const,
+  ] as const,
 
-  SERVICE_TYPE: ["A", "B", "C", "D", "E", "F", "G", "H"],
-  UNIT: ["gondor", "mordor", "wallmart", "valhalla"],
-  ES_UNIT: ["es1", "es2", "es3", "es4", "es5", "es6"],
-  ADS_UNIT: ["ads1", "ads2", "ads3", "ads4", "ads5", "ads6"],
-  CITY_UNIT: ["city1", "city2", "city3", "city4", "city5", "city6"],
-  MM_UNIT: ["mm1", "mm2", "mm3", "mm4", "mm5", "mm6"],
+  SERVICE_TYPE: ["A", "B", "C", "D", "E", "F", "G", "H"] as const,
+  UNIT: ["gondor", "mordor", "wallmart", "valhalla"] as const,
+  ES_UNIT: ["es1", "es2", "es3", "es4", "es5", "es6"] as const,
+  ADS_UNIT: ["ads1", "ads2", "ads3", "ads4", "ads5", "ads6"] as const,
+  CITY_UNIT: ["city1", "city2", "city3", "city4", "city5", "city6"] as const,
+  MM_UNIT: ["mm1", "mm2", "mm3", "mm4", "mm5", "mm6"] as const,
   MIRI_TAGS: [
     {
       name: fn[fn.dataSources.city].userTags.transportable,
@@ -32,9 +32,9 @@ export default {
     {
       name: fn[fn.dataSources.city].userTags.information,
     },
-  ],
+  ] as const,
   MIRI_DOMAINS: [
     fn[fn.dataSources.city].domainNames.internal,
     fn[fn.dataSources.city].domainNames.external,
-  ],
+  ] as const,
 };
