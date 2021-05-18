@@ -1,4 +1,4 @@
-const fn = require("../../src/config/fieldNames");
+import fn from "../config/fieldNames";
 
 export default {
   RANK: ["unknown", "rookie", "champion", "ultimate", "mega"] as const,
