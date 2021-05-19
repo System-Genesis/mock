@@ -22,15 +22,15 @@ export function createEsUser(
     user.lastName = employees[index].lastName;
     user.mi = mis[index].toString();
     user.entity = dataTypes.ENTITY_TYPE[1];
-    user.rnk = utils.randomElement(dataTypes.RANK);
+    user.rnk = utils.randomElement([...dataTypes.RANK]);
     user.rld = employees[index].rld;
 
     // change the matched aka record's hr to es unit type
-    employees[index].hr = utils.randomElement(dataTypes.ES_UNIT);
+    employees[index].hr = utils.randomElement([...dataTypes.ES_UNIT]);
 
     // unEmployee
   } else {
-    user.stype = utils.randomElement(dataTypes.SERVICE_TYPE);
+    user.stype = utils.randomElement([...dataTypes.SERVICE_TYPE]);
     user.mi = user.tz;
     user.firstName = faker.name.firstName();
     user.lastName = faker.name.lastName();

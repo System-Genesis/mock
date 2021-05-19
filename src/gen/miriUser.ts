@@ -35,7 +35,7 @@ export function createMiriUser(mis: string) {
     ]),
     tz: utils.randomElement([utils.generateID(), "", "לא ידוע", null]),
     personalNumber: utils.randomElement([mis, "", "לא ידוע", null]),
-    rank: utils.randomElement(dataTypes.RANK),
+    rank: utils.randomElement([...dataTypes.RANK]),
     rld: utils.randomElement([
       faker.date
         .between(faker.date.future(10), faker.date.past(10))
@@ -52,7 +52,7 @@ export function createMiriUser(mis: string) {
       "לא ידוע",
       "null",
     ]),
-    department: utils.randomElement(dataTypes.CITY_UNIT),
+    department: utils.randomElement([...dataTypes.CITY_UNIT]),
     stype: "",
     hr: utils.randomElement([
       faker.lorem.word() +
@@ -74,12 +74,16 @@ export function createMiriUser(mis: string) {
     ]),
     isPortalUser: utils.randomElement([true, false]),
     tags: [],
-    domains: utils.randomArrFromArr(dataTypes.MIRI_DOMAINS),
+    domains: utils.randomArrFromArr(
+      dataTypes.MIRI_DOMAINS as unknown as any[]
+    ) as any,
   };
 
   // Add tags
   for (let i = 0; i < faker.datatype.number({ min: 0, max: 2 }); i++) {
-    miriUser.tags.push(utils.randomElement(dataTypes.MIRI_TAGS));
+    miriUser.tags.push(
+      utils.randomElement(dataTypes.MIRI_TAGS as unknown as any[])
+    );
   }
 
   return miriUser;

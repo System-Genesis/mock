@@ -51,7 +51,7 @@ export default async () => {
     adUsers.push(createAdUser(emp.firstName, emp.lastName, emp.mi));
 
     // change the matched aka record's hr to ads unit type
-    emp.hr = utils.randomElement(dataTypes.ADS_UNIT);
+    emp.hr = utils.randomElement([...dataTypes.ADS_UNIT]);
   }
 
   // Generating AD unEmployee objects
