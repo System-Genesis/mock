@@ -6,7 +6,7 @@ function getRandomInt(min: number, max: number): number {
 }
 
 const utils = {
-  readJson: (fileName: string): any[] => {
+  readJson: (fileName: string): object[] => {
     return JSON.parse(fs.readFileSync(fileName, "utf8"));
   },
   createCheckDigit: (param: string): number => {
