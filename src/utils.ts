@@ -57,19 +57,20 @@ const utils = {
 
   findInData: (data: object[], query: object, exact: boolean = true) => {
     const filteredData = data.find((record) => {
+      let equal = true;
       for (const key in query) {
         if (exact) {
-          if (record[key] && record[key].toString() == query[key]) {
-            return true;
+          if (!record[key] || !(record[key].toString() === query[key])) {
+            equal = false;
           }
         } else {
-          if (record[key] && record[key].toString().includes(query[key])) {
-            return true;
+          if (!record[key] || !record[key].toString().includes(query[key])) {
+            equal = false;
           }
         }
       }
 
-      return false;
+      return equal;
     });
 
     return filteredData;
