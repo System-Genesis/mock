@@ -1,6 +1,8 @@
 import chai, { assert } from "chai";
 import chaiHttp from "chai-http";
-import { filterData } from "../src/service/service";
+import utils from "../src/utils";
+
+const filterData = utils.filterData;
 
 chai.should();
 

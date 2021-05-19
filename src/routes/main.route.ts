@@ -1,0 +1,25 @@
+import express = require("express");
+import { Request, Response } from "express";
+export const router = express.Router();
+import eightSocks from "./eightSocks.route";
+import akaEmployees from "./aka.route";
+import ads from "./ads.route";
+import adNn from "./adNn.route";
+import city from "./city.route";
+import sf from "./sf.route";
+import gen from "../gen/gen";
+
+router.get("/generate", async (_: Request, res: Response) => {
+  await gen();
+
+  res.send("<h1>New data has been successfully generated</h1>");
+});
+
+router.use("/eightSocks", eightSocks);
+router.use("/aka", akaEmployees);
+router.use("/aD/S", ads);
+router.use("/aD/NN", adNn);
+router.use("/city", city);
+router.use("/sf", sf);
+
+export default router;

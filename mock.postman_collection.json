@@ -25,9 +25,9 @@
 			"response": []
 		},
 		{
-			"name": "getEightSocks",
+			"name": "eightSocks",
 			"request": {
-				"url": "http://localhost:7700/api/getEightSocks",
+				"url": "http://localhost:7700/api/eightSocks/personalNumber/83423256",
 				"method": "GET",
 				"header": [
 					{
@@ -42,9 +42,9 @@
 			"response": []
 		},
 		{
-			"name": "getAkaTelephone",
+			"name": "aka",
 			"request": {
-				"url": "http://localhost:7700/api/getAkaTelephone",
+				"url": "http://localhost:7700/api/aka",
 				"method": "GET",
 				"header": [
 					{
@@ -59,9 +59,9 @@
 			"response": []
 		},
 		{
-			"name": "getAkaEmployees",
+			"name": "aD/s",
 			"request": {
-				"url": "http://localhost:7700/api/getAkaEmployees",
+				"url": "http://localhost:7700/api/aD/s",
 				"method": "GET",
 				"header": [
 					{
@@ -76,9 +76,9 @@
 			"response": []
 		},
 		{
-			"name": "getAkaImgMetaData",
+			"name": "aD/NN",
 			"request": {
-				"url": "http://localhost:7700/api/getAkaImgMetaData",
+				"url": "http://localhost:7700/api/aD/NN",
 				"method": "GET",
 				"header": [
 					{
@@ -93,9 +93,9 @@
 			"response": []
 		},
 		{
-			"name": "getAD/s",
+			"name": "city",
 			"request": {
-				"url": "http://localhost:7700/api/getAD/s",
+				"url": "http://localhost:7700/api/City",
 				"method": "GET",
 				"header": [
 					{
@@ -110,43 +110,9 @@
 			"response": []
 		},
 		{
-			"name": "getAD/NN",
+			"name": "sf",
 			"request": {
-				"url": "http://localhost:7700/api/getAD/NN",
-				"method": "GET",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "123",
-						"description": ""
-					}
-				],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "getCity",
-			"request": {
-				"url": "http://localhost:7700/api/getCity",
-				"method": "GET",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "123",
-						"description": ""
-					}
-				],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "getSf",
-			"request": {
-				"url": "http://localhost:7700/api/getSf",
+				"url": "http://localhost:7700/api/sf/personalNumber/74709713",
 				"method": "GET",
 				"header": [
 					{
@@ -164,6 +130,227 @@
 			"name": "isAlive",
 			"request": {
 				"url": "http://localhost:7700/isAlive",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "aka/personalNumber",
+			"request": {
+				"url": "http://localhost:7700/api/aka/personalNumber/781162944",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "aka/identityCard",
+			"request": {
+				"url": "http://localhost:7700/api/aka/identityCard/94743194",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "eightSocks/personalNumber",
+			"request": {
+				"url": "http://localhost:7700/api/eightSocks/personalNumber/54050818",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "eightSocks/identityCard",
+			"request": {
+				"url": "http://localhost:7700/api/eightSocks/identityCard/54050818",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "eightSocks/domainUser",
+			"request": {
+				"url": "http://localhost:7700/api/eightSocks/domainUser/Samara.Howell18",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "aD/s/personalNumber",
+			"request": {
+				"url": "http://localhost:7700/api/aD/s/personalNumber/933323234",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "aD/s/identityCard",
+			"request": {
+				"url": "http://localhost:7700/api/aD/s/identityCard/933323234",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "aD/s/domainUser",
+			"request": {
+				"url": "http://localhost:7700/api/aD/s/domainUser/Laila.Lockman64",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "city/domainUser",
+			"request": {
+				"url": "http://localhost:7700/api/City/domainUser/g638935803@donatelo.turtle.com",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "city/identityCard",
+			"request": {
+				"url": "http://localhost:7700/api/City/identityCard/94236269",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "city/personalNumber",
+			"request": {
+				"url": "http://localhost:7700/api/City/personalNumber/140584498",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "sf/personalNumber",
+			"request": {
+				"url": "http://localhost:7700/api/sf/personalNumber/781162944",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "123",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "sf/identityCard",
+			"request": {
+				"url": "http://localhost:7700/api/sf/identityCard/94743194",
 				"method": "GET",
 				"header": [
 					{

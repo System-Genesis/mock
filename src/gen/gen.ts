@@ -7,7 +7,7 @@ import { createSfUser } from "./sfUser";
 import { createMiriUser } from "./miriUser";
 import { createEsUser } from "./esUser";
 import { createAdUser } from "./adUser";
-import { createAkaEmployee } from "./akaEmployee";
+import { createAkaEmployee } from "./aka";
 
 const akaAmount = 400;
 export const ADAmount = 250;
