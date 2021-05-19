@@ -1,10 +1,10 @@
 import gen from "../gen/gen";
 import utils from "../utils";
 
-const filterData = (data: object[], query: object) => {
+export const filterData = (data: object[], query: object) => {
   const filteredData = data.filter((record) => {
     for (const key in query) {
-      if (!record[key].toString().includes(query[key])) {
+      if (!record[key] || !record[key].toString().includes(query[key])) {
         return false;
       }
     }
@@ -29,24 +29,8 @@ export default {
     return data;
   },
 
-  akaTelephone: (query: object) => {
-    let data = utils.readJson("./mockFiles/getAkaPhone.json");
-
-    if (query) data = filterData(data, query);
-
-    return data;
-  },
-
   akaEmployees: (query: object) => {
     let data = utils.readJson("./mockFiles/getAkaEmp.json");
-
-    if (query) data = filterData(data, query);
-
-    return data;
-  },
-
-  akaImgMetaData: (query: object) => {
-    let data = utils.readJson("./mockFiles/pictures.json");
 
     if (query) data = filterData(data, query);
 

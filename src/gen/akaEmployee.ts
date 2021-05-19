@@ -4,6 +4,16 @@ import dataTypes from "../lists/dataTypesList";
 import utils from "../utils";
 
 export function createAkaEmployee(tzs: string, mis: string): employee {
+  const takenAt = faker.date
+    .between(faker.date.past(10), faker.date.past(40))
+    .toISOString();
+  const createdAt = faker.date
+    .between(faker.date.past(1), takenAt)
+    .toISOString();
+  const updatedAt = faker.date
+    .between(faker.date.past(1), createdAt)
+    .toISOString();
+
   return {
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
@@ -20,5 +30,17 @@ export function createAkaEmployee(tzs: string, mis: string): employee {
       .between(faker.date.past(18), faker.date.past(40))
       .toISOString(),
     sex: utils.randomElement(["m", "f"]),
+    phone: {
+      telephone: utils.generateNumber(),
+      ktelephone: utils.generateNumber(50, 59),
+      telephoneType: faker.datatype.number({ min: 1, max: 2 }),
+    },
+    metaData: {
+      path: utils.generateNumber(),
+      format: utils.randomElement(["jpg"]),
+      takenAt: takenAt,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+    },
   };
 }
