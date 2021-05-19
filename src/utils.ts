@@ -33,16 +33,12 @@ const utils = {
   },
 
   generateID: (): string => {
-    const tz: number = faker.datatype.number({ min: 10000000, max: 99999999 });
+    const tz: number = parseInt(utils.generateNumber());
     return `${tz}${createCheckDigit(tz)}`;
   },
 
-  generateNumberBody: (): string => {
-    return faker.datatype.number({ min: 1000000, max: 9999999 }).toString();
-  },
-
-  generateNumberPrefix: (): string => {
-    return faker.datatype.number({ min: 50, max: 59 }).toString();
+  generateNumber: (min: number = 1000000, max: number = 9999999): string => {
+    return faker.datatype.number({ min, max }).toString();
   },
 };
 

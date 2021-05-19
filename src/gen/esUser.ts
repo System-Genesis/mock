@@ -40,7 +40,7 @@ export function createEsUser(
   }
 
   user.vphone = faker.datatype.number({ min: 1000, max: 9999 }).toString();
-  user.cphone = utils.generateNumberPrefix() + "-" + utils.generateNumberBody();
+  user.cphone = utils.generateNumber(50, 59) + "-" + utils.generateNumber();
   user.hr =
     faker.lorem.word() + "/" + faker.lorem.word() + "/" + faker.lorem.word();
   user.tf = faker.name.jobType();

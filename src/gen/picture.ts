@@ -15,7 +15,7 @@ export function createPicture(mis: string) {
 
   let picture: picture = {
     personalNumber: mis.toString(),
-    path: utils.generateNumberBody(),
+    path: utils.generateNumber(),
     format: utils.randomElement(["jpg"]),
     takenAt: takenAt,
     createdAt: createdAt,

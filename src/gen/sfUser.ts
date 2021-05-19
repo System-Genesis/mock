@@ -28,7 +28,7 @@ export function createSfUser(employee: employee) {
     rank: utils.randomElement([...dataTypes.RANK]),
     status: utils.randomElement([...dataTypes.STATUS]),
     address: faker.address.streetAddress(true),
-    telephone: "0" + utils.generateNumberPrefix() + utils.generateNumberBody(),
+    telephone: "0" + utils.generateNumber(50, 59) + utils.generateNumber(),
     entity: "soldier",
     discharge: faker.date
       .between(faker.date.future(20), faker.date.future(10))

@@ -20,7 +20,7 @@ export function createMiriUser(mis: string) {
         dataTypes.DOMAIN_MAP[5][0],
         dataTypes.DOMAIN_MAP[6][0],
       ]),
-    telephone: "0" + utils.generateNumberPrefix() + utils.generateNumberBody(),
+    telephone: "0" + utils.generateNumber(50, 59) + utils.generateNumber(),
     clearance: faker.datatype.number({ min: 1, max: 5 }),
     firstName: firstName,
     lastName: lastName,
