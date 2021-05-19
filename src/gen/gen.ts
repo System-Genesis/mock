@@ -72,7 +72,7 @@ export default async () => {
     sfUsers.push(createSfUser(employees[i]));
   }
 
-  fs.writeFileSync("./mockFiles/שkaEmp.json", JSON.stringify(employees));
+  fs.writeFileSync("./mockFiles/akaEmp.json", JSON.stringify(employees));
   fs.writeFileSync("./mockFiles/AD.json", JSON.stringify(adUsers));
   fs.writeFileSync("./mockFiles/eightSocks.json", JSON.stringify(esUsers));
   fs.writeFileSync("./mockFiles/city.json", JSON.stringify(miriUsers));
