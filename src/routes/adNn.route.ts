@@ -18,11 +18,8 @@ router.get("/personalNumber/:personalNumber", (req: Request, res: Response) => {
   if (result) {
     res.send(result);
   } else {
-    res
-      .status(400)
-      .send(
-        `person with personalNumber: ${personalNumber} isn't exists in ad/nn`
-      );
+    const msg = `person with personalNumber: ${personalNumber} isn't exists in ad/nn`;
+    res.status(400).send(msg);
   }
 });
 
@@ -34,9 +31,8 @@ router.get("/identityCard/:identityCard", (req: Request, res: Response) => {
   if (result) {
     res.send(result);
   } else {
-    res
-      .status(400)
-      .send(`person with identityCard: ${identityCard} isn't exists in ad/nn`);
+    const msg = `person with identityCard: ${identityCard} isn't exists in ad/nn`;
+    res.status(400).send(msg);
   }
 });
 
@@ -48,9 +44,8 @@ router.get("/domainUser/:domainUser", (req: Request, res: Response) => {
   if (result) {
     res.send(result);
   } else {
-    res
-      .status(400)
-      .send(`person with domainUser: ${domainUser} isn't exists in ad/nn`);
+    const msg = `person with domainUser: ${domainUser} isn't exists in ad/nn`;
+    res.status(400).send(msg);
   }
 });
 

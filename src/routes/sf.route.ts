@@ -18,9 +18,8 @@ router.get("/personalNumber/:personalNumber", (req: Request, res: Response) => {
   if (result) {
     res.send(result);
   } else {
-    res
-      .status(400)
-      .send(`person with personalNumber: ${personalNumber} isn't exists in sf`);
+    const msg = `person with personalNumber: ${personalNumber} isn't exists in sf`;
+    res.status(400).send(msg);
   }
 });
 
@@ -32,9 +31,8 @@ router.get("/identityCard/:identityCard", (req: Request, res: Response) => {
   if (result) {
     res.send(result);
   } else {
-    res
-      .status(400)
-      .send(`person with identityCard: ${identityCard} isn't exists in sf`);
+    const msg = `person with identityCard: ${identityCard} isn't exists in sf`;
+    res.status(400).send(msg);
   }
 });
 

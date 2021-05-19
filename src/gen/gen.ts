@@ -18,7 +18,7 @@ const miriAmount = 100;
 const miriAkaStart = ADAmount + esAmount;
 const MMAmount = 200;
 
-export default async () => {
+const gen = async () => {
   const mis: string[] = [];
   const tzs: string[] = [];
   const employees: types.employee[] = [];
@@ -72,9 +72,21 @@ export default async () => {
     sfUsers.push(createSfUser(employees[i]));
   }
 
+  if (!fs.existsSync("./mockFiles")) {
+    fs.mkdirSync("./mockFiles");
+  }
+
   fs.writeFileSync("./mockFiles/akaEmp.json", JSON.stringify(employees));
   fs.writeFileSync("./mockFiles/AD.json", JSON.stringify(adUsers));
   fs.writeFileSync("./mockFiles/eightSocks.json", JSON.stringify(esUsers));
   fs.writeFileSync("./mockFiles/city.json", JSON.stringify(miriUsers));
   fs.writeFileSync("./mockFiles/sf.json", JSON.stringify(sfUsers));
 };
+
+export const checkForGenerate = async () => {
+  if (!fs.existsSync("./mockFiles")) {
+    await gen();
+  }
+};
+
+export default gen;

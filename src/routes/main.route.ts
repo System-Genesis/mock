@@ -1,5 +1,5 @@
 import express = require("express");
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 export const router = express.Router();
 import eightSocks from "./eightSocks.route";
 import akaEmployees from "./aka.route";
@@ -7,12 +7,17 @@ import ads from "./ads.route";
 import adNn from "./adNn.route";
 import city from "./city.route";
 import sf from "./sf.route";
-import gen from "../gen/gen";
+import gen, { checkForGenerate } from "../gen/gen";
 
 router.get("/generate", async (_: Request, res: Response) => {
   await gen();
 
   res.send("<h1>New data has been successfully generated</h1>");
+});
+
+router.use((__: Request, _: Response, next: NextFunction) => {
+  checkForGenerate();
+  next();
 });
 
 router.use("/eightSocks", eightSocks);
