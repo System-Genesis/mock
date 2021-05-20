@@ -1,6 +1,6 @@
 import chai, { assert } from "chai";
 import chaiHttp from "chai-http";
-import utils from "../src/utils";
+import utils from "../src/utils/utils";
 
 const filterData = utils.filterData;
 

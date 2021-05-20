@@ -1,6 +1,6 @@
 import chai, { assert } from "chai";
 import chaiHttp from "chai-http";
-import utils, { createCheckDigit } from "./../src/utils";
+import utils, { createCheckDigit } from "../src/utils/utils";
 chai.should();
 
 chai.use(chaiHttp);
