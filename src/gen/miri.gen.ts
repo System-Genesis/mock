@@ -2,7 +2,7 @@ import { miriUser } from "../types/types";
 import faker from "faker";
 import dataTypes from "../lists/dataTypesList";
 import miriTypes from "../lists/miriTypes";
-import utils from "../utils";
+import utils from "../utils/utils";
 
 export function createMiriUser(mis: string) {
   const firstName = faker.name.firstName();

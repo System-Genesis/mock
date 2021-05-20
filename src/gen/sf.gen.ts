@@ -1,7 +1,7 @@
 import { employee, sf } from "../types/types";
 import faker from "faker";
 import dataTypes from "../lists/dataTypesList";
-import utils from "../utils";
+import utils from "../utils/utils";
 
 export function createSfUser(employee: employee) {
   const unique_id = faker.internet.email().split("@")[0];

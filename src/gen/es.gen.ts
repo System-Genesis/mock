@@ -1,7 +1,7 @@
 import { employee, esUser } from "../types/types";
 import faker from "faker";
 import dataTypes from "../lists/dataTypesList";
-import utils from "../utils";
+import utils from "../utils/utils";
 import { ADAmount } from "./gen";
 
 export function createEsUser(

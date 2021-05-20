@@ -29,15 +29,6 @@ export type adUser = {
   guName: string | null;
 };
 
-export type picture = {
-  personalNumber: string;
-  path: string;
-  format: string;
-  takenAt: string;
-  createdAt: string;
-  updatedAt: string;
-};
-
 export type miriUser = {
   domUser: string;
   telephone: string;
@@ -107,11 +98,4 @@ export type employee = {
     createdAt: string;
     updatedAt: string;
   };
-};
-
-export type telephone = {
-  mi: string;
-  telephone: string;
-  ktelephone: string;
-  telephoneType: number;
 };
