@@ -9,7 +9,7 @@ import city from "./city.route";
 import sf from "./sf.route";
 import gen, { checkForGenerate } from "../gen/gen";
 
-router.get("/generate", async (_: Request, res: Response) => {
+router.post("/generate", async (_: Request, res: Response) => {
   await gen();
 
   res.send("<h1>New data has been successfully generated</h1>");
