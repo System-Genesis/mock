@@ -1,6 +1,6 @@
 import { adUser } from "../types/types";
 import faker from "faker";
-import dataTypes from "../lists/dataTypesList";
+import dataTypes from "../lists/dataOption";
 
 export function createAdUser(
   firstName: string,

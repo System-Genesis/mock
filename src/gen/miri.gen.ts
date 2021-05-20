@@ -1,7 +1,6 @@
 import { miriUser } from "../types/types";
 import faker from "faker";
-import dataTypes from "../lists/dataTypesList";
-import miriTypes from "../lists/miriTypes";
+import dataTypes from "../lists/dataOption";
 import utils from "../utils/utils";
 
 export function createMiriUser(mis: string) {
@@ -10,7 +9,7 @@ export function createMiriUser(mis: string) {
 
   let miriUser: miriUser = {
     domUser:
-      utils.randomElement(miriTypes.idPrefixes) +
+      utils.randomElement([...dataTypes.ID_PREFIXES]) +
       faker.datatype.number({ min: 100000, max: 999999999 }) +
       "@" +
       utils.randomElement([
@@ -31,7 +30,7 @@ export function createMiriUser(mis: string) {
       null,
       "",
       "",
-      faker.internet.email().split("@")[0] + "@" + miriTypes.miriMail,
+      faker.internet.email().split("@")[0] + "@" + dataTypes.MIRI_MAIL,
     ]),
     tz: utils.randomElement([utils.generateID(), "", "לא ידוע", null]),
     personalNumber: utils.randomElement([mis, "", "לא ידוע", null]),
@@ -67,7 +66,7 @@ export function createMiriUser(mis: string) {
       "",
     ]),
     company: utils.randomElement([
-      ...miriTypes.rootHierarchy,
+      ...dataTypes.ROOT_HIERARCHY,
       "",
       null,
       "לא ידוע",

@@ -1,4 +1,4 @@
-import dataEnum from "../lists/dataTypesList";
+import dataEnum from "../lists/dataOption";
 
 export type esUser = {
   tz: string;

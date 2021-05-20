@@ -1,7 +1,7 @@
 import * as types from "../types/types";
 import fs from "fs";
 import faker from "faker";
-import dataTypes from "../lists/dataTypesList";
+import dataTypes from "../lists/dataOption";
 import utils from "../utils/utils";
 import { createSfUser } from "./sf.gen";
 import { createMiriUser } from "./miri.gen";

@@ -1,6 +1,6 @@
 import { employee } from "../types/types";
 import faker from "faker";
-import dataTypes from "../lists/dataTypesList";
+import dataTypes from "../lists/dataOption";
 import utils from "../utils/utils";
 
 export function createAkaEmployee(tzs: string, mis: string): employee {

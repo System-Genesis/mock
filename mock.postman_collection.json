@@ -27,7 +27,7 @@
 		{
 			"name": "eightSocks",
 			"request": {
-				"url": "http://localhost:7700/api/eightSocks/personalNumber/83423256",
+				"url": "http://localhost:7700/api/eightSocks",
 				"method": "GET",
 				"header": [
 					{
@@ -112,7 +112,7 @@
 		{
 			"name": "sf",
 			"request": {
-				"url": "http://localhost:7700/api/sf/personalNumber/74709713",
+				"url": "http://localhost:7700/api/sf",
 				"method": "GET",
 				"header": [
 					{
