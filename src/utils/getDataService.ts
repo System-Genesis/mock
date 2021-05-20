@@ -1,19 +1,23 @@
-import utils from "./utils";
+import fs from "fs";
+
+const readJson = (fileName: string): object[] => {
+  return JSON.parse(fs.readFileSync(fileName, "utf8"));
+};
 
 export default {
   sf: () => {
-    return utils.readJson("./mockFiles/sf.json");
+    return readJson("./mockFiles/sf.json");
   },
   eightSocks: () => {
-    return utils.readJson("./mockFiles/eightSocks.json");
+    return readJson("./mockFiles/eightSocks.json");
   },
   city: () => {
-    return utils.readJson("./mockFiles/city.json");
+    return readJson("./mockFiles/city.json");
   },
   aka: () => {
-    return utils.readJson("./mockFiles/aka.json");
+    return readJson("./mockFiles/aka.json");
   },
   ad: () => {
-    return utils.readJson("./mockFiles/ad.json");
+    return readJson("./mockFiles/ad.json");
   },
 };

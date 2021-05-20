@@ -1,5 +1,4 @@
 import faker from "faker";
-import fs from "fs";
 
 function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * Math.floor(max - min + 1) + min);
@@ -19,10 +18,6 @@ export const createCheckDigit = (param: number): number => {
 };
 
 const utils = {
-  readJson: (fileName: string): object[] => {
-    return JSON.parse(fs.readFileSync(fileName, "utf8"));
-  },
-
   randomElement: (array: any[]): any => {
     return array[Math.floor(Math.random() * array.length)];
   },
