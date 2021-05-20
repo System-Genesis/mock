@@ -15,8 +15,8 @@ router.get("/generate", async (_: Request, res: Response) => {
   res.send("<h1>New data has been successfully generated</h1>");
 });
 
-router.use((__: Request, _: Response, next: NextFunction) => {
-  checkForGenerate();
+router.use(async (__: Request, _: Response, next: NextFunction) => {
+  await checkForGenerate();
   next();
 });
 
