@@ -1,16 +1,16 @@
 import jwt from 'jsonwebtoken';
 import fs from 'fs';
 import path from 'path';
-import { NextFunction, Request, response, Response } from 'express';
-
-const errorRes = response.status(401).send('Unauthorized');
+import { NextFunction, Request, Response } from 'express';
 
 export const isAuth = async (
   req: Request,
-  _: Response,
+  response: Response,
   next: NextFunction,
   myToken: string
 ) => {
+  const errorRes = response.status(401).send('Unauthorized');
+
   const token = req.header('Authorization');
   const key = fs.readFileSync(path.join(__dirname, '../config/key.pem'));
 

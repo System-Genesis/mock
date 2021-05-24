@@ -8,7 +8,7 @@
     "prod": "npm run docker",
     "test": "mocha -r ts-node/register test/*.ts",
     "docker": "docker build -t mock . ",
-    "start": "node ./dist/server.js"
+    "start": "nodemon ./src/server.ts"
   },
   "repository": {
     "type": "git",
