@@ -12,7 +12,7 @@ export const isAuth = async (
   myToken: string
 ) => {
   const token = req.header("Authorization");
-  const key = fs.readFileSync(path.join(__dirname, "../config/key.pem"));
+  const key = fs.readFileSync(path.join(__dirname, "../../key.pem"));
 
   try {
     if (!token) return errorRes(res);
