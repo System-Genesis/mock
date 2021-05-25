@@ -1,4 +1,4 @@
-import faker from "faker";
+import faker from 'faker';
 
 function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * Math.floor(max - min + 1) + min);
@@ -7,7 +7,7 @@ function getRandomInt(min: number, max: number): number {
 export const createCheckDigit = (param: number): number => {
   const rawCheckDigit: number = param
     .toString()
-    .split("")
+    .split('')
     .reduce((accumulator, currChar, currIndex) => {
       let digitWeight = Number(currChar) * ((currIndex % 2) + 1);
 
@@ -28,11 +28,14 @@ const utils = {
   },
 
   generateID: (): string => {
-    const tz: number = parseInt(utils.generateNumber());
+    const tz: number = parseInt(utils.generateNumberAsString());
     return `${tz}${createCheckDigit(tz)}`;
   },
 
-  generateNumber: (min: number = 1000000, max: number = 9999999): string => {
+  generateNumberAsString: (
+    min: number = 1000000,
+    max: number = 9999999
+  ): string => {
     return faker.datatype.number({ min, max }).toString();
   },
 

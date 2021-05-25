@@ -1,7 +1,7 @@
-import { employee } from "../types/types";
-import faker from "faker";
-import dataTypes from "../lists/dataOption";
-import utils from "../utils/utils";
+import { employee } from '../types/types';
+import faker from 'faker';
+import dataTypes from '../lists/dataOption';
+import utils from '../utils/utils';
 
 export function createAkaEmployee(tzs: string, mis: string): employee {
   const takenAt = faker.date
@@ -29,15 +29,15 @@ export function createAkaEmployee(tzs: string, mis: string): employee {
     birthday: faker.date
       .between(faker.date.past(18), faker.date.past(40))
       .toISOString(),
-    sex: utils.randomElement(["m", "f"]),
+    sex: utils.randomElement(['m', 'f']),
     phone: {
-      telephone: utils.generateNumber(),
-      ktelephone: utils.generateNumber(50, 59),
+      telephone: utils.generateNumberAsString(),
+      ktelephone: utils.generateNumberAsString(50, 59),
       telephoneType: faker.datatype.number({ min: 1, max: 2 }),
     },
     metaData: {
-      path: utils.generateNumber(),
-      format: utils.randomElement(["jpg"]),
+      path: utils.generateNumberAsString(),
+      format: utils.randomElement(['jpg']),
       takenAt: takenAt,
       createdAt: createdAt,
       updatedAt: updatedAt,

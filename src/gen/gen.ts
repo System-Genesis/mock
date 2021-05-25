@@ -1,21 +1,21 @@
-import * as types from "../types/types";
-import fs from "fs";
-import faker from "faker";
-import dataTypes from "../lists/dataOption";
-import utils from "../utils/utils";
-import { createSfUser } from "./sf.gen";
-import { createMiriUser } from "./miri.gen";
-import { createEsUser } from "./es.gen";
-import { createAdUser } from "./ad.gen";
-import { createAkaEmployee } from "./aka.gen";
+import * as types from '../types/types';
+import fs from 'fs';
+import faker from 'faker';
+import dataTypes from '../lists/dataOption';
+import utils from '../utils/utils';
+import { createSfUser } from './sf.gen';
+import { createCityUser } from './city.gen';
+import { createEsUser } from './es.gen';
+import { createAdUser } from './ad.gen';
+import { createAkaEmployee } from './aka.gen';
 
 const akaAmount = 400;
 export const ADAmount = 250;
 const ADEmployeesAmount = ADAmount - 100;
 const ADUnEmployeesAmount = ADAmount - ADEmployeesAmount;
 const esAmount = 50;
-const miriAmount = 100;
-const miriAkaStart = ADAmount + esAmount;
+const cityAmount = 100;
+const cityAkaStart = ADAmount + esAmount;
 const MMAmount = 200;
 
 const gen = async () => {
@@ -24,7 +24,7 @@ const gen = async () => {
   const employees: types.employee[] = [];
   const adUsers: types.adUser[] = [];
   const esUsers: types.esUser[] = [];
-  const miriUsers: types.miriUser[] = [];
+  const cityUsers: types.cityUser[] = [];
   const sfUsers: types.sf[] = [];
 
   // Generating mi and tz lists
@@ -62,9 +62,9 @@ const gen = async () => {
     esUsers.push(createEsUser(tzs, i, employees, mis));
   }
 
-  // Generating MiriUsers
-  for (let i = 0; i < miriAmount; i++) {
-    miriUsers.push(createMiriUser(mis[miriAkaStart + i]));
+  // Generating CityUsers
+  for (let i = 0; i < cityAmount; i++) {
+    cityUsers.push(createCityUser(mis[cityAkaStart + i]));
   }
 
   // Generating SF employee/unEmployee objects
@@ -72,19 +72,19 @@ const gen = async () => {
     sfUsers.push(createSfUser(employees[i]));
   }
 
-  if (!fs.existsSync("./mockFiles")) {
-    fs.mkdirSync("./mockFiles");
+  if (!fs.existsSync('./mockFiles')) {
+    fs.mkdirSync('./mockFiles');
   }
 
-  fs.writeFileSync("./mockFiles/aka.json", JSON.stringify(employees));
-  fs.writeFileSync("./mockFiles/ad.json", JSON.stringify(adUsers));
-  fs.writeFileSync("./mockFiles/eightSocks.json", JSON.stringify(esUsers));
-  fs.writeFileSync("./mockFiles/city.json", JSON.stringify(miriUsers));
-  fs.writeFileSync("./mockFiles/sf.json", JSON.stringify(sfUsers));
+  fs.writeFileSync('./mockFiles/aka.json', JSON.stringify(employees));
+  fs.writeFileSync('./mockFiles/ad.json', JSON.stringify(adUsers));
+  fs.writeFileSync('./mockFiles/eightSocks.json', JSON.stringify(esUsers));
+  fs.writeFileSync('./mockFiles/city.json', JSON.stringify(cityUsers));
+  fs.writeFileSync('./mockFiles/sf.json', JSON.stringify(sfUsers));
 };
 
 export const checkForGenerate = async () => {
-  if (!fs.existsSync("./mockFiles")) {
+  if (!fs.existsSync('./mockFiles')) {
     await gen();
   }
 };

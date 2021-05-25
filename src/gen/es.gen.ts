@@ -1,8 +1,8 @@
-import { employee, esUser } from "../types/types";
-import faker from "faker";
-import dataTypes from "../lists/dataOption";
-import utils from "../utils/utils";
-import { ADAmount } from "./gen";
+import { employee, esUser } from '../types/types';
+import faker from 'faker';
+import dataTypes from '../lists/dataOption';
+import utils from '../utils/utils';
+import { ADAmount } from './gen';
 
 export function createEsUser(
   tzs: string[],
@@ -40,12 +40,13 @@ export function createEsUser(
   }
 
   user.vphone = faker.datatype.number({ min: 1000, max: 9999 }).toString();
-  user.cphone = utils.generateNumber(50, 59) + "-" + utils.generateNumber();
+  user.cphone =
+    utils.generateNumberAsString(50, 59) + '-' + utils.generateNumberAsString();
   user.hr =
-    faker.lorem.word() + "/" + faker.lorem.word() + "/" + faker.lorem.word();
+    faker.lorem.word() + '/' + faker.lorem.word() + '/' + faker.lorem.word();
   user.tf = faker.name.jobType();
   user.userName = faker.internet.userName(user.firstName, user.lastName);
-  user.mail = user.userName + "@" + dataTypes.DOMAIN_MAP[2][0];
+  user.mail = user.userName + '@' + dataTypes.DOMAIN_MAP[2][0];
   user.location = faker.name.jobTitle();
 
   return user as esUser;

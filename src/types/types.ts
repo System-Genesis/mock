@@ -1,4 +1,4 @@
-import dataEnum from "../lists/dataOption";
+import dataEnum from '../lists/dataOption';
 
 export type esUser = {
   tz: string;
@@ -29,7 +29,7 @@ export type adUser = {
   guName: string | null;
 };
 
-export type miriUser = {
+export type cityUser = {
   domUser: string;
   telephone: string;
   clearance: number;
@@ -47,8 +47,8 @@ export type miriUser = {
   hr: string;
   company: string | null;
   isPortalUser: boolean;
-  tags: typeof dataEnum.MIRI_TAGS[];
-  domains: typeof dataEnum.MIRI_DOMAINS;
+  tags: typeof dataEnum.CITY_TAGS[];
+  domains: typeof dataEnum.CITY_DOMAINS;
 };
 
 export type sf = {
@@ -56,7 +56,7 @@ export type sf = {
   lastName: string;
   userName: string;
   fullName: string;
-  sex: "m" | "f";
+  sex: 'm' | 'f';
   personalNumber: string;
   tz: string;
   stype: typeof dataEnum.SERVICE_TYPE;
@@ -85,7 +85,7 @@ export type employee = {
   rld: string;
   hr: typeof dataEnum.ADS_UNIT | typeof dataEnum.UNIT;
   birthday: string;
-  sex: "m" | "f";
+  sex: 'm' | 'f';
   phone: {
     telephone: string;
     ktelephone: string;

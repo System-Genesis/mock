@@ -1,9 +1,9 @@
-import jwt from "jsonwebtoken";
-import fs from "fs";
-import path from "path";
-import { NextFunction, Request, Response } from "express";
+import jwt from 'jsonwebtoken';
+import fs from 'fs';
+import path from 'path';
+import { NextFunction, Request, Response } from 'express';
 
-const errorRes = (res: Response) => res.status(401).send("Unauthorized");
+const errorRes = (res: Response) => res.status(401).send('Unauthorized');
 
 export const isAuth = async (
   req: Request,
@@ -11,8 +11,10 @@ export const isAuth = async (
   next: NextFunction,
   myToken: string
 ) => {
-  const token = req.header("Authorization");
-  const key = fs.readFileSync(path.join(__dirname, "../../key.pem"));
+  if (process.env.ENV === 'mock') return next();
+
+  const token = req.header('Authorization');
+  const key = fs.readFileSync(path.join(__dirname, '../../key.pem'));
 
   try {
     if (!token) return errorRes(res);
