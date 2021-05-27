@@ -39,6 +39,7 @@ export function createEsUser(
     user.rld = null;
   }
 
+  user.sex = utils.randomElement(['ז', 'נ']);
   user.birthday = faker.date.between(faker.date.past(18), faker.date.past(40)).toISOString();
   user.vphone = faker.datatype.number({ min: 1000, max: 9999 }).toString();
   user.cphone = utils.generateNumberAsString(50, 59) + '-' + utils.generateNumberAsString();

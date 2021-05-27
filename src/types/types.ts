@@ -13,6 +13,7 @@ export type esUser = {
   firstName: string;
   lastName: string;
   mi: string;
+  sex: string;
   entity: string;
   birthday: string;
   rnk: typeof dataEnum.RANK | null;
