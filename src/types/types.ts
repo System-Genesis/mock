@@ -14,6 +14,7 @@ export type esUser = {
   lastName: string;
   mi: string;
   entity: string;
+  birthday: string;
   rnk: typeof dataEnum.RANK | null;
   rld: string | null;
 };

@@ -39,11 +39,10 @@ export function createEsUser(
     user.rld = null;
   }
 
+  user.birthday = faker.date.between(faker.date.past(18), faker.date.past(40)).toISOString();
   user.vphone = faker.datatype.number({ min: 1000, max: 9999 }).toString();
-  user.cphone =
-    utils.generateNumberAsString(50, 59) + '-' + utils.generateNumberAsString();
-  user.hr =
-    faker.lorem.word() + '/' + faker.lorem.word() + '/' + faker.lorem.word();
+  user.cphone = utils.generateNumberAsString(50, 59) + '-' + utils.generateNumberAsString();
+  user.hr = faker.lorem.word() + '/' + faker.lorem.word() + '/' + faker.lorem.word();
   user.tf = faker.name.jobType();
   user.userName = faker.internet.userName(user.firstName, user.lastName);
   user.mail = user.userName + '@' + dataTypes.DOMAIN_MAP[2][0];
