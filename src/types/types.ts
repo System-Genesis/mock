@@ -1,4 +1,6 @@
-type esUser = {
+import dataEnum from '../lists/dataOption';
+
+export type esUser = {
   tz: string;
   vphone: string;
   cphone: string;
@@ -7,16 +9,18 @@ type esUser = {
   userName: string;
   mail: string;
   location: string;
-  stype: string;
+  stype: typeof dataEnum.SERVICE_TYPE;
   firstName: string;
   lastName: string;
   mi: string;
+  sex: string;
   entity: string;
-  rnk: string | null;
-  rld: Date | null;
+  birthday: string;
+  rnk: typeof dataEnum.RANK | null;
+  rld: string | null;
 };
 
-type adUser = {
+export type adUser = {
   KfirstName: string;
   KlastName: string;
   Kjob: string;
@@ -27,50 +31,41 @@ type adUser = {
   guName: string | null;
 };
 
-type picture = {
-  personalNumber: string;
-  path: string;
-  format: any;
-  takenAt: string;
-  createdAt: string;
-  updatedAt: string;
-};
-
-type miriUser = {
+export type cityUser = {
   domUser: string;
   telephone: string;
   clearance: number;
   firstName: string;
   lastName: string;
-  mail: any;
-  tz: any;
-  personalNumber: any;
-  rank: any;
-  rld: any;
+  mail: string;
+  tz: string;
+  personalNumber: string;
+  rank: typeof dataEnum.RANK;
+  rld: string | null;
   job: string;
-  profession: any;
-  department: any;
+  profession: string | null;
+  department: typeof dataEnum.CITY_UNIT;
   stype: string;
   hr: string;
-  company: string[];
+  company: string | null;
   isPortalUser: boolean;
-  tags: string[];
-  domains: any;
+  tags: typeof dataEnum.CITY_TAGS[];
+  domains: typeof dataEnum.CITY_DOMAINS;
 };
 
-type sf = {
+export type sf = {
   firstName: string;
   lastName: string;
   userName: string;
   fullName: string;
-  sex: "m" | "f";
+  sex: 'm' | 'f';
   personalNumber: string;
   tz: string;
-  stype: any;
+  stype: typeof dataEnum.SERVICE_TYPE;
   hierarchy: string[];
   mail: string;
-  rank: any;
-  status: any;
+  rank: typeof dataEnum.RANK;
+  status: typeof dataEnum.STATUS;
   address: string;
   telephone: string;
   entity: string;
@@ -81,23 +76,28 @@ type sf = {
   };
 };
 
-type employee = {
+export type employee = {
   firstName: string;
   lastName: string;
   tz: string;
-  mi: number;
-  clearance: number;
-  rnk: string;
-  nstype: string;
-  rld: Date;
-  hr: string;
-  birthday: Date;
-  sex: "m" | "f";
-};
-
-type telephone = {
-  mi: number;
-  telephone: string;
-  ktelephone: string;
-  telephoneType: 1 | 2;
+  mi: string;
+  clearance: string;
+  rnk: typeof dataEnum.RANK;
+  nstype: typeof dataEnum.SERVICE_TYPE;
+  rld: string;
+  hr: typeof dataEnum.ADS_UNIT | typeof dataEnum.UNIT;
+  birthday: string;
+  sex: 'm' | 'f';
+  phone: {
+    telephone: string;
+    ktelephone: string;
+    telephoneType: number;
+  };
+  metaData: {
+    path: string;
+    format: string;
+    takenAt: string;
+    createdAt: string;
+    updatedAt: string;
+  };
 };
