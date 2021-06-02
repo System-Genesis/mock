@@ -88,11 +88,10 @@ export type employee = {
   hr: typeof dataEnum.ADS_UNIT | typeof dataEnum.UNIT;
   birthday: string;
   sex: 'm' | 'f';
-  phone: {
-    telephone: string;
-    ktelephone: string;
-    telephoneType: number;
-  };
+  areaCode: string;
+  phone: string;
+  mAreaCode: string;
+  mPhone: string;
   metaData: {
     path: string;
     format: string;
