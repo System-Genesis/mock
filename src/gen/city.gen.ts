@@ -1,7 +1,7 @@
 import { cityUser } from '../types/types';
 import faker from 'faker';
 import dataTypes from '../lists/dataOption';
-import utils from '../utils/utils';
+import utils, { getRandomFieldFromWeightedObj } from '../utils/utils';
 
 export function createCityUser(mis: string) {
   const firstName = faker.name.firstName();
@@ -9,29 +9,21 @@ export function createCityUser(mis: string) {
 
   let cityUser: cityUser = {
     domUser:
-      utils.randomElement([...dataTypes.ID_PREFIXES]) +
+      getRandomFieldFromWeightedObj([...dataTypes.ID_PREFIXES], dataTypes.ID_PREFIXES_WEIGHT) +
       faker.datatype.number({ min: 100000, max: 999999999 }) +
       '@' +
-      utils.randomElement([
-        dataTypes.DOMAIN_MAP[4][0],
-        dataTypes.DOMAIN_MAP[4][0],
-        dataTypes.DOMAIN_MAP[4][0],
-        dataTypes.DOMAIN_MAP[5][0],
-        dataTypes.DOMAIN_MAP[6][0],
-      ]),
+      getRandomFieldFromWeightedObj(
+        [dataTypes.DOMAIN_MAP[4][0], dataTypes.DOMAIN_MAP[5][0], dataTypes.DOMAIN_MAP[6][0]],
+        [3, 1, 1]
+      ),
     telephone: '0' + utils.generateNumberAsString(50, 59) + utils.generateNumberAsString(),
     clearance: faker.datatype.number({ min: 1, max: 5 }),
     firstName: firstName,
     lastName: lastName,
-    mail: utils.randomElement([
-      'לא ידוע',
-      'לא ידוע',
-      null,
-      null,
-      '',
-      '',
-      faker.internet.email().split('@')[0] + '@' + dataTypes.CITY_MAIL,
-    ]),
+    mail: getRandomFieldFromWeightedObj(
+      ['לא ידוע', null, '', faker.internet.email().split('@')[0] + '@' + dataTypes.CITY_MAIL],
+      [2, 2, 2, 1]
+    ),
     tz: utils.randomElement([
       utils.generateID(),
       utils.generateID().slice(1, 8),
@@ -39,7 +31,7 @@ export function createCityUser(mis: string) {
       'לא ידוע',
       null,
     ]),
-    personalNumber: utils.randomElement([mis, '', 'לא ידוע', null]),
+    personalNumber: utils.randomElement([mis, '', 'לא ידוע', null, utils.generateNumberAsString()]),
     rank: utils.randomElement([...dataTypes.RANK]),
     rld: utils.randomElement([
       faker.date.between(faker.date.future(10), faker.date.past(10)).toISOString(),

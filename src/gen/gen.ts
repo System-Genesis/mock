@@ -7,7 +7,7 @@ import { createSfUser } from './sf.gen';
 import { createCityUser } from './city.gen';
 import { createEsUser } from './es.gen';
 import { createAdUser } from './ad.gen';
-import { createAkaEmployee } from './aka.gen';
+import { createAkaEmployee as createAkaUser } from './aka.gen';
 
 const akaAmount = 400;
 export const ADAmount = 250;
@@ -30,13 +30,17 @@ const gen = async () => {
   // Generating mi and tz lists
   for (let i = 0; i < akaAmount; i++) {
     tzs.push(utils.generateID());
-    mis.push(faker.datatype.number({ min: 100000, max: 999999999 }).toString());
+    mis.push(utils.generateNumberAsString());
   }
 
   // Generating aka employees and phone
   for (let i = 0; i < akaAmount; i++) {
-    employees.push(createAkaEmployee(tzs[i], mis[i]));
-    // telephones.push(createAkaPhone(mis[i]));
+    employees.push(createAkaUser(tzs[i], mis[i]));
+
+    // Same tzs another mis create 6 users
+    if (i < 6) {
+      employees.push(createAkaUser(tzs[i], utils.generateNumberAsString()));
+    }
   }
 
   // Generating AD employees objects
@@ -59,10 +63,10 @@ const gen = async () => {
 
   // Generating es employee/unEmployee objects
   for (let i = 0; i < esAmount; i++) {
-    esUsers.push(createEsUser(tzs, i, employees, mis));
+    esUsers.push(createEsUser(tzs, i + ADAmount, employees, mis));
   }
 
-  // Generating CityUsers
+  // Generating employee/unEmployee CityUsers
   for (let i = 0; i < cityAmount; i++) {
     cityUsers.push(createCityUser(mis[cityAkaStart + i]));
   }

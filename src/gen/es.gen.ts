@@ -2,15 +2,13 @@ import { employee, esUser } from '../types/types';
 import faker from 'faker';
 import dataTypes from '../lists/dataOption';
 import utils from '../utils/utils';
-import { ADAmount } from './gen';
 
 export function createEsUser(
   tzs: string[],
-  i: number,
+  index: number,
   employees: employee[],
   mis: string[]
 ): esUser {
-  const index = ADAmount + i;
   const user: Partial<esUser> = {};
 
   user.tz = utils.randomElement([utils.generateID(), tzs[index]]);

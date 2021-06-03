@@ -7,6 +7,7 @@ export function createSfUser(employee: employee) {
   const unique_id = faker.internet.email().split('@')[0];
   const firstName = employee.firstName;
   const lastName = employee.lastName;
+  const unEmployee = utils.generateNumberAsString(0, 1) === '0';
 
   let sf: sf = {
     firstName: firstName,
@@ -14,8 +15,8 @@ export function createSfUser(employee: employee) {
     userName: faker.internet.userName(firstName, lastName),
     fullName: firstName.concat(' ', lastName),
     sex: utils.randomElement(['m', 'f']),
-    personalNumber: employee.mi.toString(),
-    tz: employee.tz,
+    personalNumber: unEmployee ? utils.generateID() : employee.mi.toString(),
+    tz: unEmployee ? utils.generateNumberAsString() : employee.tz,
     stype: utils.randomElement([...dataTypes.SERVICE_TYPE]),
     hierarchy: [
       faker.lorem.word(),
@@ -28,14 +29,9 @@ export function createSfUser(employee: employee) {
     rank: utils.randomElement([...dataTypes.RANK]),
     status: utils.randomElement([...dataTypes.STATUS]),
     address: faker.address.streetAddress(true),
-    telephone:
-      '0' +
-      utils.generateNumberAsString(50, 59) +
-      utils.generateNumberAsString(),
+    telephone: '0' + utils.generateNumberAsString(50, 59) + utils.generateNumberAsString(),
     entity: 'soldier',
-    discharge: faker.date
-      .between(faker.date.future(20), faker.date.future(10))
-      .toISOString(),
+    discharge: faker.date.between(faker.date.future(20), faker.date.future(10)).toISOString(),
     primaryDU: { uniqueID: unique_id, adfsUID: unique_id + '@ddd' },
   };
   return sf;
