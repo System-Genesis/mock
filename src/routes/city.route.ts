@@ -6,7 +6,7 @@ import token from './../config/auth.config';
 
 export const router = express.Router();
 
-router.use((req, res, next) => isAuth(req, res, next, token.tokenCity));
+router.use((req, res, next) => isAuth(req, res, next, token.audCity));
 
 router.get('/', (req: Request, res: Response) => {
   const result = cityService.all(req.query);

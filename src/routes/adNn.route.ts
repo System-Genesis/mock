@@ -5,7 +5,7 @@ import { isAuth } from './../auth/auth';
 import token from './../config/auth.config';
 export const router = express.Router();
 
-router.use((req, res, next) => isAuth(req, res, next, token.tokenAdNn));
+router.use((req, res, next) => isAuth(req, res, next, token.audAdNn));
 
 router.get('/', (req: Request, res: Response) => {
   const result = adService.all(req.query);

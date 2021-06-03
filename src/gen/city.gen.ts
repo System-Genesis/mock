@@ -19,10 +19,7 @@ export function createCityUser(mis: string) {
         dataTypes.DOMAIN_MAP[5][0],
         dataTypes.DOMAIN_MAP[6][0],
       ]),
-    telephone:
-      '0' +
-      utils.generateNumberAsString(50, 59) +
-      utils.generateNumberAsString(),
+    telephone: '0' + utils.generateNumberAsString(50, 59) + utils.generateNumberAsString(),
     clearance: faker.datatype.number({ min: 1, max: 5 }),
     firstName: firstName,
     lastName: lastName,
@@ -45,9 +42,7 @@ export function createCityUser(mis: string) {
     personalNumber: utils.randomElement([mis, '', 'לא ידוע', null]),
     rank: utils.randomElement([...dataTypes.RANK]),
     rld: utils.randomElement([
-      faker.date
-        .between(faker.date.future(10), faker.date.past(10))
-        .toISOString(),
+      faker.date.between(faker.date.future(10), faker.date.past(10)).toISOString(),
       null,
       '',
       'לא ידוע',
@@ -74,27 +69,18 @@ export function createCityUser(mis: string) {
       null,
       '',
     ]),
-    company: utils.randomElement([
-      ...dataTypes.ROOT_HIERARCHY,
-      '',
-      null,
-      'לא ידוע',
-    ]),
+    company: utils.randomElement([...dataTypes.ROOT_HIERARCHY, '', null, 'לא ידוע']),
     isPortalUser: utils.randomElement([true, false]),
     tags: [],
     domains:
       utils.generateNumberAsString(0, 3) === '0'
         ? []
-        : (utils.randomArrFromArr(
-            dataTypes.CITY_DOMAINS as unknown as any[]
-          ) as any),
+        : (utils.randomArrFromArr(dataTypes.CITY_DOMAINS as unknown as any[]) as any),
   };
 
   // Add tags
   for (let i = 0; i < faker.datatype.number({ min: 0, max: 2 }); i++) {
-    cityUser.tags.push(
-      utils.randomElement(dataTypes.CITY_TAGS as unknown as any[])
-    );
+    cityUser.tags.push(utils.randomElement(dataTypes.CITY_TAGS as unknown as any[]));
   }
 
   return cityUser;
