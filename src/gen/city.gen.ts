@@ -1,11 +1,11 @@
-import { cityUser } from '../types/types';
+import { user, cityUser } from '../types/types';
 import faker from 'faker';
 import dataTypes from '../lists/dataOption';
 import utils, { getRandomFieldFromWeightedObj } from '../utils/utils';
 
-export function createCityUser(mis: string) {
-  const firstName = faker.name.firstName();
-  const lastName = faker.name.lastName();
+export function createCityUser(user: user | undefined = undefined) {
+  const firstName = (user ? user.firstName : faker.name.firstName()) as string;
+  const lastName = (user ? user.lastName : faker.name.lastName()) as string;
 
   let cityUser: cityUser = {
     domUser:
@@ -31,7 +31,7 @@ export function createCityUser(mis: string) {
       'לא ידוע',
       null,
     ]),
-    personalNumber: utils.randomElement([mis, '', 'לא ידוע', null, utils.generateNumberAsString()]),
+    personalNumber: user ? user.mi : utils.randomElement(['', 'לא ידוע', null, utils.generateID()]),
     rank: utils.randomElement([...dataTypes.RANK]),
     rld: utils.randomElement([
       faker.date.between(faker.date.future(10), faker.date.past(10)).toISOString(),

@@ -1,4 +1,17 @@
 import faker from 'faker';
+import { createAkaUser } from './../gen/aka.gen';
+import { createEsUser } from './../gen/es.gen';
+import { createCityUser } from './../gen/city.gen';
+import { createAdUser } from './../gen/ad.gen';
+import { createSfUser } from './../gen/sf.gen';
+
+export const createUserFun = {
+  aka: createAkaUser,
+  es: createEsUser,
+  city: createCityUser,
+  ad: createAdUser,
+  sf: createSfUser,
+};
 
 function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * Math.floor(max - min + 1) + min);

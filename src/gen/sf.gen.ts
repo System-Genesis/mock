@@ -1,22 +1,21 @@
-import { employee, sf } from '../types/types';
+import { user, sfUser } from '../types/types';
 import faker from 'faker';
 import dataTypes from '../lists/dataOption';
 import utils from '../utils/utils';
 
-export function createSfUser(employee: employee) {
+export function createSfUser(user: user | undefined = undefined) {
   const unique_id = faker.internet.email().split('@')[0];
-  const firstName = employee.firstName;
-  const lastName = employee.lastName;
-  const unEmployee = utils.generateNumberAsString(0, 1) === '0';
+  const firstName = (user ? user.firstName : faker.name.firstName()) as string;
+  const lastName = (user ? user.lastName : faker.name.lastName()) as string;
 
-  let sf: sf = {
+  let sf: sfUser = {
     firstName: firstName,
     lastName: lastName,
     userName: faker.internet.userName(firstName, lastName),
     fullName: firstName.concat(' ', lastName),
     sex: utils.randomElement(['m', 'f']),
-    personalNumber: unEmployee ? utils.generateID() : employee.mi.toString(),
-    tz: unEmployee ? utils.generateNumberAsString() : employee.tz,
+    personalNumber: (!user ? utils.generateID() : user.mi) as string,
+    tz: (!user ? utils.generateNumberAsString() : user.tz) as string,
     stype: utils.randomElement([...dataTypes.SERVICE_TYPE]),
     hierarchy: [
       faker.lorem.word(),

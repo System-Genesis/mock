@@ -1,6 +1,11 @@
 import dataEnum from '../lists/dataOption';
-
-export type esUser = {
+export interface user {
+  firstName?: string;
+  lastName?: string;
+  tz?: string;
+  mi?: string;
+}
+export interface esUser extends user {
   tz: string;
   vphone: string;
   cphone: string;
@@ -18,9 +23,9 @@ export type esUser = {
   birthday: string;
   rnk: typeof dataEnum.RANK | null;
   rld: string | null;
-};
+}
 
-export type adUser = {
+export interface adUser extends user {
   KfirstName: string;
   KlastName: string;
   Kjob: string;
@@ -29,9 +34,9 @@ export type adUser = {
   sAMAccountName: string;
   mail: string;
   guName: string | null;
-};
+}
 
-export type cityUser = {
+export interface cityUser extends user {
   domUser: string;
   telephone: string;
   clearance: number;
@@ -51,9 +56,9 @@ export type cityUser = {
   isPortalUser: boolean;
   tags: typeof dataEnum.CITY_TAGS[];
   domains: typeof dataEnum.CITY_DOMAINS;
-};
+}
 
-export type sf = {
+export interface sfUser extends user {
   firstName: string;
   lastName: string;
   userName: string;
@@ -74,9 +79,9 @@ export type sf = {
     uniqueID: string;
     adfsUID: string;
   };
-};
+}
 
-export type employee = {
+export interface akaUser extends user {
   firstName: string;
   lastName: string;
   tz: string;
@@ -99,4 +104,4 @@ export type employee = {
     createdAt: string;
     updatedAt: string;
   };
-};
+}
