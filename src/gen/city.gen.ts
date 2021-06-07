@@ -2,10 +2,29 @@ import { user, cityUser } from '../types/types';
 import faker from 'faker';
 import dataTypes from '../lists/dataOption';
 import utils, { getRandomFieldFromWeightedObj } from '../utils/utils';
+import fn from '../config/fieldNames';
 
 export function createCityUser(user: user | undefined = undefined) {
   const firstName = (user ? user.firstName : faker.name.firstName()) as string;
   const lastName = (user ? user.lastName : faker.name.lastName()) as string;
+  const domains =
+    utils.generateNumberAsString(0, 3) === '0'
+      ? []
+      : (utils.randomArrFromArr(dataTypes.CITY_DOMAINS as unknown as any[]) as any);
+  const hr = domains.includes(fn[fn.dataSources.city].domainNames.internal)
+    ? `${fn.rootHierarchy.ourCompany}` + '/' + faker.lorem.word() + '/' + faker.lorem.word()
+    : utils.randomElement([
+        faker.lorem.word() +
+          '/' +
+          faker.lorem.word() +
+          '/' +
+          faker.lorem.word() +
+          '/' +
+          faker.lorem.word(),
+        `${firstName} ${lastName}`,
+        null,
+        '',
+      ]);
 
   let cityUser: cityUser = {
     domUser:
@@ -21,53 +40,39 @@ export function createCityUser(user: user | undefined = undefined) {
     firstName: firstName,
     lastName: lastName,
     mail: getRandomFieldFromWeightedObj(
-      ['לא ידוע', null, '', faker.internet.email().split('@')[0] + '@' + dataTypes.CITY_MAIL],
+      ['unknown', null, '', faker.internet.email().split('@')[0] + '@' + dataTypes.CITY_MAIL],
       [2, 2, 2, 1]
     ),
     tz: utils.randomElement([
       utils.generateID(),
       utils.generateID().slice(1, 8),
       '',
-      'לא ידוע',
+      'unknown',
       null,
     ]),
-    personalNumber: user ? user.mi : utils.randomElement(['', 'לא ידוע', null, utils.generateID()]),
+    personalNumber: user ? user.mi : utils.randomElement(['', 'unknown', null, utils.generateID()]),
     rank: utils.randomElement([...dataTypes.RANK]),
     rld: utils.randomElement([
       faker.date.between(faker.date.future(10), faker.date.past(10)).toISOString(),
       null,
       '',
-      'לא ידוע',
+      'unknown',
     ]),
     job: faker.name.jobTitle(),
     profession: utils.randomElement([
       faker.name.jobType(),
       faker.name.jobType(),
       '',
-      'לא ידוע',
+      'unknown',
       'null',
     ]),
     department: utils.randomElement([...dataTypes.CITY_UNIT]),
     stype: '',
-    hr: utils.randomElement([
-      faker.lorem.word() +
-        '/' +
-        faker.lorem.word() +
-        '/' +
-        faker.lorem.word() +
-        '/' +
-        faker.lorem.word(),
-      `${firstName} ${lastName}`,
-      null,
-      '',
-    ]),
-    company: utils.randomElement([...dataTypes.ROOT_HIERARCHY, '', null, 'לא ידוע']),
+    hr: hr,
+    company: utils.randomElement([...dataTypes.ROOT_HIERARCHY, '', null, 'unknown']),
     isPortalUser: utils.randomElement([true, false]),
     tags: [],
-    domains:
-      utils.generateNumberAsString(0, 3) === '0'
-        ? []
-        : (utils.randomArrFromArr(dataTypes.CITY_DOMAINS as unknown as any[]) as any),
+    domains: domains,
   };
 
   // Add tags
