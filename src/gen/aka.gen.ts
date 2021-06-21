@@ -25,8 +25,8 @@ export function createAkaUser(
     sex: utils.randomElement(['m', 'f']),
     phone: utils.generateNumberAsString(),
     areaCode: utils.generateNumberAsString(2, 8),
-    mAreaCode: utils.generateNumberAsString(),
-    mPhone: utils.generateNumberAsString(50, 59),
+    mAreaCode: utils.generateNumberAsString(50, 59),
+    mPhone: utils.generateNumberAsString(),
     metaData: {
       path: utils.generateNumberAsString(),
       format: utils.randomElement(['jpg']),
