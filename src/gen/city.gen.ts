@@ -82,3 +82,69 @@ export function createCityUser(user: user | undefined = undefined) {
 
   return cityUser;
 }
+
+export function createCityUserGU() {
+  const firstName = faker.name.firstName();
+  const lastName = faker.name.lastName();
+  const domains =
+    utils.generateNumberAsString(0, 3) === '0'
+      ? []
+      : (utils.randomArrFromArr(dataTypes.CITY_DOMAINS as unknown as any[]) as any);
+  const hr = domains.includes(fn[fn.dataSources.city].domainNames.internal)
+    ? `${fn.rootHierarchy.ourCompany}` + '/' + faker.lorem.word() + '/' + faker.lorem.word()
+    : utils.randomElement([
+        faker.lorem.word() +
+          '/' +
+          faker.lorem.word() +
+          '/' +
+          faker.lorem.word() +
+          '/' +
+          faker.lorem.word(),
+        `${firstName} ${lastName}`,
+        null,
+        '',
+      ]);
+
+  let cityUser: Partial<cityUser> = {
+    domUser:
+      getRandomFieldFromWeightedObj(
+        [...dataTypes.ID_PREFIXES_GU],
+        dataTypes.ID_PREFIXES_GU_WEIGHT
+      ) +
+      faker.datatype.number({ min: 100000, max: 999999999 }) +
+      '@' +
+      getRandomFieldFromWeightedObj(
+        [dataTypes.DOMAIN_MAP[4][0], dataTypes.DOMAIN_MAP[5][0], dataTypes.DOMAIN_MAP[6][0]],
+        [3, 1, 1]
+      ),
+    telephone: '0' + utils.generateNumberAsString(50, 59) + utils.generateNumberAsString(),
+    firstName: firstName,
+    lastName: lastName,
+    mail: getRandomFieldFromWeightedObj(
+      ['unknown', null, '', faker.internet.email().split('@')[0] + '@' + dataTypes.CITY_MAIL],
+      [2, 2, 2, 1]
+    ),
+
+    job: faker.name.jobTitle(),
+    profession: utils.randomElement([
+      faker.name.jobType(),
+      faker.name.jobType(),
+      '',
+      'unknown',
+      'null',
+    ]),
+    stype: '',
+    hr: hr,
+    company: utils.randomElement([...dataTypes.ROOT_HIERARCHY, '', null, 'unknown']),
+    isPortalUser: utils.randomElement([true, false]),
+    tags: [],
+    domains: domains,
+  };
+
+  // Add tags
+  for (let i = 0; i < faker.datatype.number({ min: 0, max: 2 }); i++) {
+    cityUser.tags!.push(utils.randomElement(dataTypes.CITY_TAGS as unknown as any[]));
+  }
+
+  return cityUser;
+}

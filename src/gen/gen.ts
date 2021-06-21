@@ -3,7 +3,7 @@ import fs from 'fs';
 import dataTypes from '../lists/dataOption';
 import utils from '../utils/utils';
 import { createSfUser } from './sf.gen';
-import { createCityUser } from './city.gen';
+import { createCityUser, createCityUserGU } from './city.gen';
 import { createEsUser } from './es.gen';
 import { createAdUser } from './ad.gen';
 import { createAkaUser } from './aka.gen';
@@ -80,6 +80,10 @@ function city(akaUser: akaUser[], cityUsers: cityUser[], cityUnUsers: cityUser[]
     cityUnUsers.push(createCityUser());
   }
 
+  // goalUser
+  for (let i = 0; i < cityAmount; i++) {
+    cityUnUsers.push(createCityUserGU() as cityUser);
+  }
   // city & aka
   for (let i = 0; i < cityAmount; i++) {
     cityUsers.push(createCityUser(akaUser[cityAkaStart + i]));
