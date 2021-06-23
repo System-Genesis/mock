@@ -1,4 +1,17 @@
 import faker from 'faker';
+import { createAkaUser } from './../gen/aka.gen';
+import { createEsUser } from './../gen/es.gen';
+import { createCityUser } from './../gen/city.gen';
+import { createAdUser } from './../gen/ad.gen';
+import { createSfUser } from './../gen/sf.gen';
+
+export const createUserFun = {
+  aka: createAkaUser,
+  es: createEsUser,
+  city: createCityUser,
+  ad: createAdUser,
+  sf: createSfUser,
+};
 
 function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * Math.floor(max - min + 1) + min);
@@ -17,6 +30,18 @@ export const createCheckDigit = (param: number): number => {
   return rawCheckDigit % 10 ? 10 - (rawCheckDigit % 10) : 0;
 };
 
+export function getRandomFieldFromWeightedObj(array: any[], weights: number[]) {
+  const unWeightedArray: string[] = [];
+
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < weights[i]; j++) {
+      unWeightedArray.push(array[i]);
+    }
+  }
+
+  return unWeightedArray[Math.floor(Math.random() * unWeightedArray.length)];
+}
+
 const utils = {
   randomElement: (array: any[]): any => {
     return array[Math.floor(Math.random() * array.length)];
@@ -32,10 +57,7 @@ const utils = {
     return `${tz}${createCheckDigit(tz)}`;
   },
 
-  generateNumberAsString: (
-    min: number = 1000000,
-    max: number = 9999999
-  ): string => {
+  generateNumberAsString: (min: number = 1000000, max: number = 9999999): string => {
     return faker.datatype.number({ min, max }).toString();
   },
 

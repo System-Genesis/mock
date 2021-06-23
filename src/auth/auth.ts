@@ -5,12 +5,9 @@ import { NextFunction, Request, Response } from 'express';
 
 const errorRes = (res: Response) => res.status(401).send('Unauthorized');
 
-export const isAuth = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-  myToken: string
-) => {
+type payloadType = { aud: string };
+
+export const isAuth = async (req: Request, res: Response, next: NextFunction, myAud: string) => {
   if (process.env.ENV === 'mock') return next();
 
   const token = req.header('Authorization');
@@ -19,9 +16,9 @@ export const isAuth = async (
   try {
     if (!token) return errorRes(res);
 
-    const payload: any = jwt.verify(token, key.toString());
+    const payload: payloadType = jwt.verify(token, key.toString()) as payloadType;
 
-    if (!payload || payload.aud !== myToken) return errorRes(res);
+    if (!payload || payload.aud !== myAud) return errorRes(res);
 
     return next();
   } catch (err) {
