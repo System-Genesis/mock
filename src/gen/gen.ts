@@ -36,11 +36,11 @@ const gen = async () => {
     mis.push(utils.generateNumberAsString());
   }
 
-  aka(akaUsers, tzs, mis);
-  es(akaUsers, esUsers, esUnUsers);
-  city(akaUsers, cityUsers, cityUnUsers);
-  sfUser(sfUsers, akaUsers, sfUnUsers);
-  ad(akaUsers, adUsers, adUnUsers);
+  generateAka(akaUsers, tzs, mis);
+  generateEs(akaUsers, esUsers, esUnUsers);
+  generateCity(akaUsers, cityUsers, cityUnUsers);
+  generateSfUser(sfUsers, akaUsers, sfUnUsers);
+  generateAd(akaUsers, adUsers, adUnUsers);
   combine();
 
   if (!fs.existsSync('./mockFiles')) {
@@ -62,7 +62,7 @@ export const checkForGenerate = async () => {
 
 export default gen;
 
-function sfUser(sfUsers: sfUser[], akaUsers: akaUser[], sfUnUsers: sfUser[]) {
+function generateSfUser(sfUsers: sfUser[], akaUsers: akaUser[], sfUnUsers: sfUser[]) {
   // sf
   for (let i = 0; i < sfAmount; i++) {
     sfUnUsers.push(createSfUser());
@@ -74,7 +74,7 @@ function sfUser(sfUsers: sfUser[], akaUsers: akaUser[], sfUnUsers: sfUser[]) {
   }
 }
 
-function city(akaUser: akaUser[], cityUsers: cityUser[], cityUnUsers: cityUser[]) {
+function generateCity(akaUser: akaUser[], cityUsers: cityUser[], cityUnUsers: cityUser[]) {
   // city
   for (let i = 0; i < cityAmount; i++) {
     cityUnUsers.push(createCityUser());
@@ -90,7 +90,7 @@ function city(akaUser: akaUser[], cityUsers: cityUser[], cityUnUsers: cityUser[]
   }
 }
 
-function es(akaUsers: akaUser[], esUsers: esUser[], esUnUsers: esUser[]) {
+function generateEs(akaUsers: akaUser[], esUsers: esUser[], esUnUsers: esUser[]) {
   // es
   for (let i = 0; i < esAmount; i++) {
     esUnUsers.push(createEsUser());
@@ -102,7 +102,7 @@ function es(akaUsers: akaUser[], esUsers: esUser[], esUnUsers: esUser[]) {
   }
 }
 
-function ad(akaUsers: akaUser[], adUsers: adUser[], adUnUsers: adUser[]) {
+function generateAd(akaUsers: akaUser[], adUsers: adUser[], adUnUsers: adUser[]) {
   // ad
   for (let i = 0; i < ADUnUsersAmount; i++) {
     adUnUsers.push(createAdUser());
@@ -119,7 +119,7 @@ function ad(akaUsers: akaUser[], adUsers: adUser[], adUnUsers: adUser[]) {
   }
 }
 
-function aka(akaUsers: akaUser[], tzs: string[], mis: string[]) {
+function generateAka(akaUsers: akaUser[], tzs: string[], mis: string[]) {
   for (let i = 0; i < akaAmount; i++) {
     akaUsers.push(createAkaUser(tzs[i], mis[i]));
 
@@ -138,7 +138,7 @@ function combine() {
 
   // es & city
   for (let i = 0; i < 10; i++) {
-    esUnUsers.push(createEsUser(city[i + ADAmount]));
+    esUnUsers.push(createEsUser(generateCity[i + ADAmount]));
   }
 
   // es & sf

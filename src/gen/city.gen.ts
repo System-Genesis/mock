@@ -4,7 +4,7 @@ import dataTypes from '../lists/dataOption';
 import utils, { getRandomFieldFromWeightedObj } from '../utils/utils';
 import fn from '../config/fieldNames';
 
-export function createCityUser(user: user | undefined = undefined) {
+export function createCityUser(user?: user) {
   const firstName = (user ? user.firstName : faker.name.firstName()) as string;
   const lastName = (user ? user.lastName : faker.name.lastName()) as string;
   const domains =
@@ -89,7 +89,7 @@ export function createCityUserGU() {
   const domains =
     utils.generateNumberAsString(0, 3) === '0'
       ? []
-      : (utils.randomArrFromArr(dataTypes.CITY_DOMAINS as unknown as any[]) as any);
+      : ([utils.randomElement(dataTypes.CITY_DOMAINS as unknown as any[])] as any);
   const hr = domains.includes(fn[fn.dataSources.city].domainNames.internal)
     ? `${fn.rootHierarchy.ourCompany}` + '/' + faker.lorem.word() + '/' + faker.lorem.word()
     : utils.randomElement([

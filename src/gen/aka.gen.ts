@@ -4,8 +4,8 @@ import dataTypes from '../lists/dataOption';
 import utils from '../utils/utils';
 
 export function createAkaUser(
-  tzs: string = utils.generateID(),
-  mis: string = utils.generateNumberAsString()
+  tz: string = utils.generateID(),
+  mi: string = utils.generateNumberAsString()
 ): akaUser {
   const takenAt = faker.date.between(faker.date.past(10), faker.date.past(40)).toISOString();
   const createdAt = faker.date.between(faker.date.past(1), takenAt).toISOString();
@@ -14,13 +14,13 @@ export function createAkaUser(
   return {
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
-    tz: tzs,
-    mi: mis,
+    tz: tz,
+    mi: mi,
     clearance: faker.datatype.number({ min: 0, max: 10 }).toString(),
     rnk: utils.randomElement([...dataTypes.RANK]),
     nstype: utils.randomElement([...dataTypes.SERVICE_TYPE]),
     rld: faker.date.between(faker.date.future(10), faker.date.past(10)).toISOString(),
-    hr: utils.randomElement([...dataTypes.UNIT]),
+    hr: utils.randomElement([...dataTypes.AKA_UNIT]),
     birthday: faker.date.between(faker.date.past(18), faker.date.past(40)).toISOString(),
     sex: utils.randomElement(['m', 'f']),
     phone: utils.generateNumberAsString(),

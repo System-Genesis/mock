@@ -90,7 +90,7 @@ export interface akaUser extends user {
   rnk: typeof dataEnum.RANK;
   nstype: typeof dataEnum.SERVICE_TYPE;
   rld: string;
-  hr: typeof dataEnum.ADS_UNIT | typeof dataEnum.UNIT;
+  hr: typeof dataEnum.ADS_UNIT | typeof dataEnum.AKA_UNIT;
   birthday: string;
   sex: 'm' | 'f';
   areaCode: string;

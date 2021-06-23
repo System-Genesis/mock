@@ -3,7 +3,7 @@ import faker from 'faker';
 import dataTypes from '../lists/dataOption';
 import utils from '../utils/utils';
 
-export function createSfUser(user: user | undefined = undefined) {
+export function createSfUser(user?: user) {
   const unique_id = faker.internet.email().split('@')[0];
   const firstName = (user ? user.firstName : faker.name.firstName()) as string;
   const lastName = (user ? user.lastName : faker.name.lastName()) as string;

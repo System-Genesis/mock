@@ -20,7 +20,7 @@ export default {
   ] as const,
 
   SERVICE_TYPE: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'] as const,
-  UNIT: ['gondor', 'mordor', 'wallmart', 'valhalla'] as const,
+  AKA_UNIT: ['gondor', 'mordor', 'wallmart', 'valhalla'] as const,
   ES_UNIT: ['es1', 'es2', 'es3', 'es4', 'es5', 'es6'] as const,
   ADS_UNIT: ['ads1', 'ads2', 'ads3', 'ads4', 'ads5', 'ads6'] as const,
   CITY_UNIT: ['city1', 'city2', 'city3', 'city4', 'city5', 'city6'] as const,

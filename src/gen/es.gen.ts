@@ -3,7 +3,7 @@ import faker from 'faker';
 import dataTypes from '../lists/dataOption';
 import utils from '../utils/utils';
 
-export function createEsUser(user: akaUser | undefined = undefined): esUser {
+export function createEsUser(user?: akaUser): esUser {
   const esUser: Partial<esUser> = {};
 
   esUser.mi = user

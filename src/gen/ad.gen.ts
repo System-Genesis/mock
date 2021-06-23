@@ -3,7 +3,7 @@ import faker from 'faker';
 import dataTypes from '../lists/dataOption';
 import utils from '../utils/utils';
 
-export function createAdUser(user: user | undefined = undefined) {
+export function createAdUser(user?: user) {
   const job = faker.name.jobTitle();
   const sAMAccountName = faker.internet.email().split('@')[0];
   const firstName = (user ? user.firstName : faker.name.firstName()) as string;
