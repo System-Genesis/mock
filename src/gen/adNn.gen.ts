@@ -5,7 +5,7 @@ import utils, { getRandomInt } from '../utils/utils';
 
 export function createAdNnUser(user?: user) {
   const job = faker.name.jobTitle();
-  const sAMAccountName = faker.internet.email().split('@')[0];
+  const userPrincipalName = faker.internet.email().split('@')[0];
   const firstName = (user ? user.firstName : faker.name.firstName()) as string;
   const lastName = (user ? user.lastName : faker.name.lastName()) as string;
   const mi = user ? user.mi : utils.generateID();
@@ -14,13 +14,9 @@ export function createAdNnUser(user?: user) {
     KfirstName: firstName,
     guName: firstName,
     KlastName: lastName,
-    userPrincipalName: user
-      ? utils.randomElement(['M' + mi, 'D' + mi])
-      : utils.randomElement([
-          'M' + utils.generateID(),
-          'D' + utils.generateID(),
-          'BB' + utils.generateID(),
-        ]),
+    sAMAccountName: user
+      ? utils.randomElement(['stam' + mi, 'nn' + mi])
+      : utils.randomElement(['stam' + utils.generateID(), 'BB' + utils.generateID()]),
     Kjob: job,
     hierarchy:
       faker.lorem.word() +
@@ -34,8 +30,8 @@ export function createAdNnUser(user?: user) {
       firstName +
       ' ' +
       lastName,
-    sAMAccountName: getRandomInt(0, 1) === 0 ? 'nn' + sAMAccountName : sAMAccountName,
-    mail: sAMAccountName + '@' + dataTypes.DOMAIN_MAP[0][0],
+    userPrincipalName: getRandomInt(0, 1) === 0 ? 'nn' + userPrincipalName : userPrincipalName,
+    mail: userPrincipalName + '@' + dataTypes.DOMAIN_MAP[0][0],
   };
 
   return ad;
