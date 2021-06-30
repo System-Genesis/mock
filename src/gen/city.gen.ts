@@ -11,30 +11,42 @@ export function createCityUser(user?: user) {
     utils.generateNumberAsString(0, 3) === '0'
       ? []
       : (utils.randomArrFromArr(dataTypes.CITY_DOMAINS as unknown as any[]) as any);
-  const hr = domains.includes(fn[fn.dataSources.city].domainNames.internal)
-    ? `${fn.rootHierarchy.ourCompany}` + '/' + faker.lorem.word() + '/' + faker.lorem.word()
-    : utils.randomElement([
-        faker.lorem.word() +
-          '/' +
+
+  const domUser =
+    getRandomFieldFromWeightedObj([...dataTypes.ID_PREFIXES], dataTypes.ID_PREFIXES_WEIGHT) +
+    faker.datatype.number({ min: 100000, max: 999999999 }) +
+    '@' +
+    getRandomFieldFromWeightedObj(
+      [dataTypes.DOMAIN_MAP[4][0], dataTypes.DOMAIN_MAP[5][0], dataTypes.DOMAIN_MAP[6][0]],
+      [3, 1, 1]
+    );
+
+  const hr =
+    domains.includes(fn[fn.dataSources.city].domainNames.internal) ||
+    domUser.startsWith('mads') ||
+    domUser.startsWith('madNN')
+      ? getRandomFieldFromWeightedObj(
+          [
+            '',
+            `${fn.rootHierarchy.ourCompany}` + '/' + faker.lorem.word() + '/' + faker.lorem.word(),
+          ],
+          [1, 3]
+        )
+      : utils.randomElement([
           faker.lorem.word() +
-          '/' +
-          faker.lorem.word() +
-          '/' +
-          faker.lorem.word(),
-        `${firstName} ${lastName}`,
-        null,
-        '',
-      ]);
+            '/' +
+            faker.lorem.word() +
+            '/' +
+            faker.lorem.word() +
+            '/' +
+            faker.lorem.word(),
+          `${firstName} ${lastName}`,
+          null,
+          '',
+        ]);
 
   let cityUser: cityUser = {
-    domUser:
-      getRandomFieldFromWeightedObj([...dataTypes.ID_PREFIXES], dataTypes.ID_PREFIXES_WEIGHT) +
-      faker.datatype.number({ min: 100000, max: 999999999 }) +
-      '@' +
-      getRandomFieldFromWeightedObj(
-        [dataTypes.DOMAIN_MAP[4][0], dataTypes.DOMAIN_MAP[5][0], dataTypes.DOMAIN_MAP[6][0]],
-        [3, 1, 1]
-      ),
+    domUser: domUser,
     telephone: '0' + utils.generateNumberAsString(50, 59) + utils.generateNumberAsString(),
     clearance: faker.datatype.number({ min: 1, max: 5 }),
     firstName: firstName,
@@ -90,33 +102,42 @@ export function createCityUserGU() {
     utils.generateNumberAsString(0, 3) === '0'
       ? []
       : ([utils.randomElement(dataTypes.CITY_DOMAINS as unknown as any[])] as any);
-  const hr = domains.includes(fn[fn.dataSources.city].domainNames.internal)
-    ? `${fn.rootHierarchy.ourCompany}` + '/' + faker.lorem.word() + '/' + faker.lorem.word()
-    : utils.randomElement([
-        faker.lorem.word() +
-          '/' +
+
+  const domUser =
+    getRandomFieldFromWeightedObj([...dataTypes.ID_PREFIXES_GU], dataTypes.ID_PREFIXES_GU_WEIGHT) +
+    faker.datatype.number({ min: 100000, max: 999999999 }) +
+    '@' +
+    getRandomFieldFromWeightedObj(
+      [dataTypes.DOMAIN_MAP[4][0], dataTypes.DOMAIN_MAP[5][0], dataTypes.DOMAIN_MAP[6][0]],
+      [3, 1, 1]
+    );
+
+  const hr =
+    domains.includes(fn[fn.dataSources.city].domainNames.internal) ||
+    domUser.startsWith('mads') ||
+    domUser.startsWith('madNN')
+      ? getRandomFieldFromWeightedObj(
+          [
+            '',
+            `${fn.rootHierarchy.ourCompany}` + '/' + faker.lorem.word() + '/' + faker.lorem.word(),
+          ],
+          [1, 3]
+        )
+      : utils.randomElement([
           faker.lorem.word() +
-          '/' +
-          faker.lorem.word() +
-          '/' +
-          faker.lorem.word(),
-        `${firstName} ${lastName}`,
-        null,
-        '',
-      ]);
+            '/' +
+            faker.lorem.word() +
+            '/' +
+            faker.lorem.word() +
+            '/' +
+            faker.lorem.word(),
+          `${firstName} ${lastName}`,
+          null,
+          '',
+        ]);
 
   let cityUser: Partial<cityUser> = {
-    domUser:
-      getRandomFieldFromWeightedObj(
-        [...dataTypes.ID_PREFIXES_GU],
-        dataTypes.ID_PREFIXES_GU_WEIGHT
-      ) +
-      faker.datatype.number({ min: 100000, max: 999999999 }) +
-      '@' +
-      getRandomFieldFromWeightedObj(
-        [dataTypes.DOMAIN_MAP[4][0], dataTypes.DOMAIN_MAP[5][0], dataTypes.DOMAIN_MAP[6][0]],
-        [3, 1, 1]
-      ),
+    domUser: domUser,
     telephone: '0' + utils.generateNumberAsString(50, 59) + utils.generateNumberAsString(),
     firstName: firstName,
     lastName: lastName,

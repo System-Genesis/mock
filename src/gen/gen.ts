@@ -7,6 +7,7 @@ import { createCityUser, createCityUserGU } from './city.gen';
 import { createEsUser } from './es.gen';
 import { createAdUser } from './ad.gen';
 import { createAkaUser } from './aka.gen';
+import { createAdNnUser } from './adNn.gen';
 
 const akaAmount = 400;
 export const ADAmount = 250;
@@ -22,6 +23,8 @@ const tzs: string[] = [];
 const akaUsers: akaUser[] = [];
 const adUsers: adUser[] = [];
 const adUnUsers: adUser[] = [];
+const adNnUsers: adUser[] = [];
+const adNnUnUsers: adUser[] = [];
 const esUsers: esUser[] = [];
 const esUnUsers: esUser[] = [];
 const cityUsers: cityUser[] = [];
@@ -41,6 +44,7 @@ const gen = async () => {
   generateCity(akaUsers, cityUsers, cityUnUsers);
   generateSfUser(sfUsers, akaUsers, sfUnUsers);
   generateAd(akaUsers, adUsers, adUnUsers);
+  generateAdNn(akaUsers, adNnUsers, adNnUnUsers);
   combine();
 
   if (!fs.existsSync('./mockFiles')) {
@@ -49,6 +53,7 @@ const gen = async () => {
 
   fs.writeFileSync('./mockFiles/aka.json', JSON.stringify(akaUsers));
   fs.writeFileSync('./mockFiles/ad.json', JSON.stringify([...adUsers, ...adUnUsers]));
+  fs.writeFileSync('./mockFiles/adNn.json', JSON.stringify([...adNnUsers, ...adNnUnUsers]));
   fs.writeFileSync('./mockFiles/eightSocks.json', JSON.stringify([...esUsers, ...esUnUsers]));
   fs.writeFileSync('./mockFiles/city.json', JSON.stringify([...cityUsers, ...cityUnUsers]));
   fs.writeFileSync('./mockFiles/sf.json', JSON.stringify([...sfUsers, ...sfUnUsers]));
@@ -77,16 +82,19 @@ function generateSfUser(sfUsers: sfUser[], akaUsers: akaUser[], sfUnUsers: sfUse
 function generateCity(akaUser: akaUser[], cityUsers: cityUser[], cityUnUsers: cityUser[]) {
   // city
   for (let i = 0; i < cityAmount; i++) {
-    cityUnUsers.push(createCityUser());
+    const user = createCityUser();
+    cityUnUsers.push(user);
   }
 
   // goalUser
   for (let i = 0; i < cityAmount; i++) {
-    cityUnUsers.push(createCityUserGU() as cityUser);
+    const user = createCityUserGU() as cityUser;
+    cityUnUsers.push(user);
   }
   // city & aka
   for (let i = 0; i < cityAmount; i++) {
-    cityUsers.push(createCityUser(akaUser[cityAkaStart + i]));
+    const user = createCityUser(akaUser[cityAkaStart + i]);
+    cityUsers.push(user);
   }
 }
 
@@ -119,6 +127,23 @@ function generateAd(akaUsers: akaUser[], adUsers: adUser[], adUnUsers: adUser[])
   }
 }
 
+function generateAdNn(akaUsers: akaUser[], adNnUsers: adUser[], adNnUnUsers: adUser[]) {
+  // adNn
+  for (let i = 0; i < ADUnUsersAmount; i++) {
+    adNnUnUsers.push(createAdNnUser());
+  }
+
+  // adNn & aka
+  for (let i = 0; i < ADUserAmount; i++) {
+    const user = akaUsers[i];
+
+    adNnUsers.push(createAdNnUser(user));
+
+    // change the matched aka record's hr to ads unit type
+    user.hr = utils.randomElement([...dataTypes.ADS_UNIT]);
+  }
+}
+
 function generateAka(akaUsers: akaUser[], tzs: string[], mis: string[]) {
   for (let i = 0; i < akaAmount; i++) {
     akaUsers.push(createAkaUser(tzs[i], mis[i]));
@@ -133,7 +158,9 @@ function generateAka(akaUsers: akaUser[], tzs: string[], mis: string[]) {
 function combine() {
   // city & sf
   for (let i = 0; i < cityAmount; i++) {
-    cityUsers.push(createCityUser(sfUnUsers[cityAkaStart + i]));
+    const user = createCityUser(sfUnUsers[cityAkaStart + i]);
+
+    cityUsers.push(user);
   }
 
   // es & city
@@ -160,10 +187,12 @@ function combine() {
   for (let i = 0; i < 10; i++) {
     const user = cityUnUsers[i];
 
-    adUsers.push(createAdUser(user));
+    const adUser = createAdUser(user);
 
     // change the matched aka record's hr to ads unit type
-    user.hr = utils.randomElement([...dataTypes.ADS_UNIT]);
+    user.hr = adUser.hierarchy;
+
+    adUsers.push(adUser);
   }
 
   // ad & sf
