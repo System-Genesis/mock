@@ -13,7 +13,7 @@ export const createUserFun = {
   sf: createSfUser,
 };
 
-function getRandomInt(min: number, max: number): number {
+export function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * Math.floor(max - min + 1) + min);
 }
 
