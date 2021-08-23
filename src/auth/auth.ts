@@ -11,7 +11,7 @@ export const isAuth = async (req: Request, res: Response, next: NextFunction, my
   if (process.env.ENV === 'mock') return next();
 
   const token = req.header('Authorization');
-  const key = fs.readFileSync(path.join(__dirname, '../../key.pem'));
+  const key = fs.readFileSync(path.join(__dirname, '../key/key.pem'));
 
   try {
     if (!token) return errorRes(res);
