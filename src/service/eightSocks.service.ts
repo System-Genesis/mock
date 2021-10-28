@@ -1,5 +1,5 @@
-import getDataService from "../utils/getDataService";
-import utils from "../utils/utils";
+import getDataService from '../DataAccess/dataFromLocalJson';
+import utils from '../utils/utils';
 
 export default {
   all: (query: object) => {

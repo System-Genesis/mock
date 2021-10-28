@@ -1,14 +1,26 @@
-import faker from "faker";
-import fs from "fs";
+import faker from 'faker';
+import { createAkaUser } from './../gen/aka.gen';
+import { createEsUser } from './../gen/es.gen';
+import { createCityUser } from './../gen/city.gen';
+import { createAdUser } from './../gen/ad.gen';
+import { createSfUser } from './../gen/sf.gen';
 
-function getRandomInt(min: number, max: number): number {
+export const createUserFun = {
+  aka: createAkaUser,
+  es: createEsUser,
+  city: createCityUser,
+  ad: createAdUser,
+  sf: createSfUser,
+};
+
+export function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * Math.floor(max - min + 1) + min);
 }
 
 export const createCheckDigit = (param: number): number => {
   const rawCheckDigit: number = param
     .toString()
-    .split("")
+    .split('')
     .reduce((accumulator, currChar, currIndex) => {
       let digitWeight = Number(currChar) * ((currIndex % 2) + 1);
 
@@ -18,11 +30,34 @@ export const createCheckDigit = (param: number): number => {
   return rawCheckDigit % 10 ? 10 - (rawCheckDigit % 10) : 0;
 };
 
-const utils = {
-  readJson: (fileName: string): object[] => {
-    return JSON.parse(fs.readFileSync(fileName, "utf8"));
-  },
+export const createHr = (hrHead: string, hrTail: string[]): string => {
+  let hr = hrHead;
 
+  const length = Math.floor(Math.random() * hrTail.length);
+
+  for (let i = 0; i < length; i++) {
+    const h = hrTail[Math.floor(Math.random() * hrTail.length)];
+    if (!hr.includes(h)) {
+      hr += '/' + h;
+    }
+  }
+
+  return hr;
+};
+
+export function getRandomFieldFromWeightedObj(array: any[], weights: number[]) {
+  const unWeightedArray: string[] = [];
+
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < weights[i]; j++) {
+      unWeightedArray.push(array[i]);
+    }
+  }
+
+  return unWeightedArray[Math.floor(Math.random() * unWeightedArray.length)];
+}
+
+const utils = {
   randomElement: (array: any[]): any => {
     return array[Math.floor(Math.random() * array.length)];
   },
@@ -33,11 +68,11 @@ const utils = {
   },
 
   generateID: (): string => {
-    const tz: number = parseInt(utils.generateNumber());
+    const tz: number = parseInt(utils.generateNumberAsString());
     return `${tz}${createCheckDigit(tz)}`;
   },
 
-  generateNumber: (min: number = 1000000, max: number = 9999999): string => {
+  generateNumberAsString: (min: number = 1000000, max: number = 9999999): string => {
     return faker.datatype.number({ min, max }).toString();
   },
 

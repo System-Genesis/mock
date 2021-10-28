@@ -1,6 +1,11 @@
-import dataEnum from "../lists/dataOption";
-
-export type esUser = {
+import dataEnum from '../lists/dataOption';
+export interface user {
+  firstName?: string;
+  lastName?: string;
+  tz?: string;
+  mi?: string;
+}
+export interface esUser extends user {
   tz: string;
   vphone: string;
   cphone: string;
@@ -13,12 +18,14 @@ export type esUser = {
   firstName: string;
   lastName: string;
   mi: string;
+  sex: string;
   entity: string;
+  birthday: string;
   rnk: typeof dataEnum.RANK | null;
   rld: string | null;
-};
+}
 
-export type adUser = {
+export interface adUser extends user {
   KfirstName: string;
   KlastName: string;
   Kjob: string;
@@ -27,9 +34,9 @@ export type adUser = {
   sAMAccountName: string;
   mail: string;
   guName: string | null;
-};
+}
 
-export type miriUser = {
+export interface cityUser extends user {
   domUser: string;
   telephone: string;
   clearance: number;
@@ -47,16 +54,16 @@ export type miriUser = {
   hr: string;
   company: string | null;
   isPortalUser: boolean;
-  tags: typeof dataEnum.MIRI_TAGS[];
-  domains: typeof dataEnum.MIRI_DOMAINS;
-};
+  tags: typeof dataEnum.CITY_TAGS[];
+  domains: typeof dataEnum.CITY_DOMAINS;
+}
 
-export type sf = {
+export interface sfUser extends user {
   firstName: string;
   lastName: string;
   userName: string;
   fullName: string;
-  sex: "m" | "f";
+  sex: 'm' | 'f';
   personalNumber: string;
   tz: string;
   stype: typeof dataEnum.SERVICE_TYPE;
@@ -72,9 +79,9 @@ export type sf = {
     uniqueID: string;
     adfsUID: string;
   };
-};
+}
 
-export type employee = {
+export interface akaUser extends user {
   firstName: string;
   lastName: string;
   tz: string;
@@ -83,14 +90,13 @@ export type employee = {
   rnk: typeof dataEnum.RANK;
   nstype: typeof dataEnum.SERVICE_TYPE;
   rld: string;
-  hr: typeof dataEnum.ADS_UNIT | typeof dataEnum.UNIT;
+  hr: typeof dataEnum.ADS_UNIT | typeof dataEnum.AKA_UNIT;
   birthday: string;
-  sex: "m" | "f";
-  phone: {
-    telephone: string;
-    ktelephone: string;
-    telephoneType: number;
-  };
+  sex: 'm' | 'f';
+  areaCode: string;
+  phone: string;
+  mAreaCode: string;
+  mPhone: string;
   metaData: {
     path: string;
     format: string;
@@ -98,4 +104,4 @@ export type employee = {
     createdAt: string;
     updatedAt: string;
   };
-};
+}

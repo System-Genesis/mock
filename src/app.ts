@@ -6,14 +6,6 @@ const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 
-app.use((req, _, next) => {
-  if (req.headers["authorization"] === process.env.AUTH) {
-    next();
-  } else {
-    throw "unauthorized";
-  }
-});
-
 app.use("/api", router);
 
 app.use("/isAlive", (_req, res) => {
@@ -25,3 +17,4 @@ app.use("*", (_req, res) => {
 });
 
 export default app;
+
