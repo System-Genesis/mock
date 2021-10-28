@@ -1,7 +1,18 @@
+import { createHr } from './../utils/utils';
 import { user, sfUser } from '../types/types';
 import faker from 'faker';
 import dataTypes from '../lists/dataOption';
 import utils from '../utils/utils';
+
+const hrHead = faker.lorem.word() + '/' + faker.lorem.word() + '/' + faker.lorem.word();
+const hrTail = [
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+];
 
 export function createSfUser(user?: user) {
   const unique_id = faker.internet.email().split('@')[0];
@@ -17,13 +28,7 @@ export function createSfUser(user?: user) {
     personalNumber: (!user ? utils.generateID() : user.mi) as string,
     tz: (!user ? utils.generateNumberAsString() : user.tz) as string,
     stype: utils.randomElement([...dataTypes.SERVICE_TYPE]),
-    hierarchy: [
-      faker.lorem.word(),
-      faker.lorem.word(),
-      faker.lorem.word(),
-      faker.lorem.word(),
-      faker.lorem.word(),
-    ],
+    hierarchy: createHr(hrHead, hrTail).split('/'),
     mail: unique_id + '@' + dataTypes.DOMAIN_MAP[7][0],
     rank: utils.randomElement([...dataTypes.RANK]),
     status: utils.randomElement([...dataTypes.STATUS]),

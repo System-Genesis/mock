@@ -1,20 +1,24 @@
 import { user, cityUser } from '../types/types';
 import faker from 'faker';
 import dataTypes from '../lists/dataOption';
-import utils, { getRandomFieldFromWeightedObj } from '../utils/utils';
+import utils, { createHr, getRandomFieldFromWeightedObj } from '../utils/utils';
 import fn from '../config/fieldNames';
+
+const hrHead = fn.rootHierarchy.ourCompany + '/' + faker.lorem.word() + '/' + faker.lorem.word();
+const hrTail = [
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+];
 
 export function createCityUser(user?: user) {
   let cityUser: cityUser = {
     ...userGenericFields(user),
     clearance: faker.datatype.number({ min: 1, max: 5 }),
-    tz: utils.randomElement([
-      utils.generateID(),
-      utils.generateID().slice(1, 8),
-      '',
-      'unknown',
-      null,
-    ]),
+    tz: utils.randomElement([utils.generateID(), utils.generateID().slice(1, 8), '', 'unknown', null]),
     personalNumber: user ? user.mi : utils.randomElement(['', 'unknown', null, utils.generateID()]),
     rank: utils.randomElement([...dataTypes.RANK]),
     rld: utils.randomElement([
@@ -57,13 +61,7 @@ function userGenericFields(user?: user) {
       [2, 2, 2, 1]
     ),
     job: faker.name.jobTitle(),
-    profession: utils.randomElement([
-      faker.name.jobType(),
-      faker.name.jobType(),
-      '',
-      'unknown',
-      'null',
-    ]),
+    profession: utils.randomElement([faker.name.jobType(), faker.name.jobType(), '', 'unknown', 'null']),
     telephone: '0' + utils.generateNumberAsString(50, 59) + utils.generateNumberAsString(),
     stype: '',
     company: utils.randomElement([...dataTypes.ROOT_HIERARCHY, '', null, 'unknown']),
@@ -82,25 +80,8 @@ function getHr(domains: any, domUser: string, firstName: string, lastName: strin
   return domains.includes(fn[fn.dataSources.city].domainNames.internal) ||
     domUser.startsWith('mads') ||
     domUser.startsWith('madNN')
-    ? getRandomFieldFromWeightedObj(
-        [
-          '',
-          `${fn.rootHierarchy.ourCompany}` + '/' + faker.lorem.word() + '/' + faker.lorem.word(),
-        ],
-        [1, 3]
-      )
-    : utils.randomElement([
-        faker.lorem.word() +
-          '/' +
-          faker.lorem.word() +
-          '/' +
-          faker.lorem.word() +
-          '/' +
-          faker.lorem.word(),
-        `${firstName} ${lastName}`,
-        null,
-        '',
-      ]);
+    ? getRandomFieldFromWeightedObj(['', hrHead], [1, 3])
+    : utils.randomElement([createHr(hrHead, hrTail), `${firstName} ${lastName}`, null, '']);
 }
 
 function getDomUser(ID_PREFIXES, ID_PREFIXES_WEIGHT) {

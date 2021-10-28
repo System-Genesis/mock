@@ -1,14 +1,22 @@
 import { akaUser, esUser } from '../types/types';
 import faker from 'faker';
 import dataTypes from '../lists/dataOption';
-import utils from '../utils/utils';
+import utils, { createHr } from '../utils/utils';
+
+const hrHead = faker.lorem.word() + '/' + faker.lorem.word() + '/' + faker.lorem.word();
+const hrTail = [
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+];
 
 export function createEsUser(user?: akaUser): esUser {
   const esUser: Partial<esUser> = {};
 
-  esUser.mi = user
-    ? utils.randomElement([utils.generateNumberAsString(), user.mi])
-    : utils.generateNumberAsString();
+  esUser.mi = user ? utils.randomElement([utils.generateNumberAsString(), user.mi]) : utils.generateNumberAsString();
 
   esUser.stype = user?.nstype || utils.randomElement([...dataTypes.SERVICE_TYPE]);
   esUser.lastName = user?.lastName || faker.name.lastName();
@@ -24,7 +32,7 @@ export function createEsUser(user?: akaUser): esUser {
   esUser.birthday = faker.date.between(faker.date.past(18), faker.date.past(40)).toISOString();
   esUser.vphone = faker.datatype.number({ min: 1000, max: 9999 }).toString();
   esUser.cphone = utils.generateNumberAsString(50, 59) + '-' + utils.generateNumberAsString();
-  esUser.hr = faker.lorem.word() + '/' + faker.lorem.word() + '/' + faker.lorem.word();
+  esUser.hr = createHr(hrHead, hrTail);
   esUser.tf = faker.name.jobType();
   esUser.userName = faker.internet.userName(esUser.firstName, esUser.lastName);
   esUser.mail = esUser.userName + '@' + dataTypes.DOMAIN_MAP[2][0];

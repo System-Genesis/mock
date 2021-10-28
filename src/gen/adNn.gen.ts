@@ -1,7 +1,17 @@
 import { adUser, user } from '../types/types';
 import faker from 'faker';
 import dataTypes from '../lists/dataOption';
-import utils, { getRandomInt } from '../utils/utils';
+import utils, { createHr, getRandomInt } from '../utils/utils';
+
+const hrHead = faker.lorem.word() + '/' + faker.lorem.word() + '/' + faker.lorem.word();
+const hrTail = [
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+  faker.lorem.word(),
+];
 
 export function createAdNnUser(user?: user) {
   const job = faker.name.jobTitle();
@@ -18,18 +28,7 @@ export function createAdNnUser(user?: user) {
       ? utils.randomElement(['stam' + mi, 'nn' + mi])
       : utils.randomElement(['stam' + utils.generateID(), 'BB' + utils.generateID()]),
     Kjob: job,
-    hierarchy:
-      faker.lorem.word() +
-      '/' +
-      faker.lorem.word() +
-      '/' +
-      faker.lorem.word() +
-      '/' +
-      job +
-      ' - ' +
-      firstName +
-      ' ' +
-      lastName,
+    hierarchy: createHr(hrHead, hrTail) + '/' + job + ' - ' + firstName + ' ' + lastName,
     userPrincipalName: getRandomInt(0, 1) === 0 ? 'nn' + userPrincipalName : userPrincipalName,
     mail: userPrincipalName + '@' + dataTypes.DOMAIN_MAP[0][0],
   };

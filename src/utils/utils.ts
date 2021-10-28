@@ -30,6 +30,21 @@ export const createCheckDigit = (param: number): number => {
   return rawCheckDigit % 10 ? 10 - (rawCheckDigit % 10) : 0;
 };
 
+export const createHr = (hrHead: string, hrTail: string[]): string => {
+  let hr = hrHead;
+
+  const length = Math.floor(Math.random() * hrTail.length);
+
+  for (let i = 0; i < length; i++) {
+    const h = hrTail[Math.floor(Math.random() * hrTail.length)];
+    if (!hr.includes(h)) {
+      hr += '/' + h;
+    }
+  }
+
+  return hr;
+};
+
 export function getRandomFieldFromWeightedObj(array: any[], weights: number[]) {
   const unWeightedArray: string[] = [];
 
