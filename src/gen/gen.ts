@@ -1,22 +1,22 @@
-import * as types from "../types/types";
-import fs from "fs";
-import faker from "faker";
-import dataTypes from "../lists/dataOption";
-import utils from "../utils/utils";
-import { createSfUser } from "./sf.gen";
-import { createMiriUser } from "./miri.gen";
-import { createEsUser } from "./es.gen";
-import { createAdUser } from "./ad.gen";
-import { createAkaEmployee } from "./aka.gen";
+import * as types from '../types/types';
+import fs from 'fs';
+import faker from 'faker';
+import dataTypes from '../lists/dataOption';
+import utils from '../utils/utils';
+import { createSfUser } from './sf.gen';
+import { createMiriUser } from './miri.gen';
+import { createEsUser } from './es.gen';
+import { createAdUser } from './ad.gen';
+import { createAkaEmployee } from './aka.gen';
 
-const akaAmount = 400;
-export const ADAmount = 250;
-const ADEmployeesAmount = ADAmount - 100;
+const akaAmount = 12000;
+export const ADAmount = 8000;
+const ADEmployeesAmount = ADAmount - 3000;
 const ADUnEmployeesAmount = ADAmount - ADEmployeesAmount;
-const esAmount = 50;
-const miriAmount = 100;
+const esAmount = 1500;
+const miriAmount = 3000;
 const miriAkaStart = ADAmount + esAmount;
-const MMAmount = 200;
+const MMAmount = 600;
 
 const gen = async () => {
   const mis: string[] = [];
@@ -72,19 +72,19 @@ const gen = async () => {
     sfUsers.push(createSfUser(employees[i]));
   }
 
-  if (!fs.existsSync("./mockFiles")) {
-    fs.mkdirSync("./mockFiles");
+  if (!fs.existsSync('./mockFiles')) {
+    fs.mkdirSync('./mockFiles');
   }
 
-  fs.writeFileSync("./mockFiles/aka.json", JSON.stringify(employees));
-  fs.writeFileSync("./mockFiles/ad.json", JSON.stringify(adUsers));
-  fs.writeFileSync("./mockFiles/eightSocks.json", JSON.stringify(esUsers));
-  fs.writeFileSync("./mockFiles/city.json", JSON.stringify(miriUsers));
-  fs.writeFileSync("./mockFiles/sf.json", JSON.stringify(sfUsers));
+  fs.writeFileSync('./mockFiles/aka.json', JSON.stringify(employees));
+  fs.writeFileSync('./mockFiles/ad.json', JSON.stringify(adUsers));
+  fs.writeFileSync('./mockFiles/eightSocks.json', JSON.stringify(esUsers));
+  fs.writeFileSync('./mockFiles/city.json', JSON.stringify(miriUsers));
+  fs.writeFileSync('./mockFiles/sf.json', JSON.stringify(sfUsers));
 };
 
 export const checkForGenerate = async () => {
-  if (!fs.existsSync("./mockFiles")) {
+  if (!fs.existsSync('./mockFiles')) {
     await gen();
   }
 };
