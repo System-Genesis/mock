@@ -14,17 +14,11 @@ service:
     port: 3000
 
 volume:
-  -name: build-rogd-volume
-   mountPath: /dist/
-   secretName: azure-secret 
-   shareName: system-genesis/ 
-   type: azurefile
-  
-  -name: build-rogd-volume
-   mountPath: /dist/key/
-   secretName: azure-secret 
-   shareName: system-genesis/ 
-   type: azurefile
+  - name: mock-volume
+    mountPath: /dist/
+    secretName: azure-secret 
+    shareName: system-genesis/mock/
+    type: azurefile
 
 config:
   configmaps: 
