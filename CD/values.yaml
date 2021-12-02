@@ -15,9 +15,9 @@ service:
 
 volume:
   - name: mock-volume
-    mountPath: /dist/
+    mountPath: /dist
     secretName: azure-secret 
-    shareName: system-genesis/mock/
+    shareName: system-genesis/mock
     type: azurefile
 
 config:
