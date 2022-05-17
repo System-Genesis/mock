@@ -34,9 +34,17 @@ export function createSfUser(user?: user) {
     status: utils.randomElement([...dataTypes.STATUS]),
     address: faker.address.streetAddress(true),
     telephone: '0' + utils.generateNumberAsString(50, 59) + utils.generateNumberAsString(),
-    entity: 'soldier',
+    entity: 'Soldier',
     discharge: faker.date.between(faker.date.future(20), faker.date.future(10)).toISOString(),
     primaryDU: { uniqueID: unique_id, adfsUID: unique_id + '@ddd' },
   };
+
+  if (!user && new Date().getTime() % 5 == 0) {
+    delete sf.personalNumber;
+    delete sf.tz;
+    sf.employeeNumber = new Date().getTime().toString().substring(0, 3);
+    sf.entity = 'external';
+  }
+
   return sf;
 }

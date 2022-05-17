@@ -64,8 +64,9 @@ export interface sfUser extends user {
   userName: string;
   fullName: string;
   sex: 'm' | 'f';
-  personalNumber: string;
-  tz: string;
+  personalNumber?: string;
+  tz?: string;
+  employeeNumber?: string;
   stype: typeof dataEnum.SERVICE_TYPE;
   hierarchy: string[];
   mail: string;
