@@ -1,5 +1,4 @@
 import app from './app';
-import gen from './gen/gen';
 
 require('dotenv').config();
 
