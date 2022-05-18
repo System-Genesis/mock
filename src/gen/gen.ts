@@ -9,14 +9,14 @@ import { createAdUser } from './ad.gen';
 import { createAkaUser } from './aka.gen';
 import { createAdNnUser } from './adNn.gen';
 
-const akaAmount = 40000;
-export const ADAmount = 25000;
-const ADUserAmount = ADAmount - 10000;
+const akaAmount = 4000;
+export const ADAmount = 2500;
+const ADUserAmount = ADAmount - 1000;
 const ADUnUsersAmount = ADAmount - ADUserAmount;
-const esAmount = 5000;
-const cityAmount = 10000;
+const esAmount = 500;
+const cityAmount = 1000;
 const cityAkaStart = ADAmount + esAmount;
-const sfAmount = 20000;
+const sfAmount = 2000;
 
 const mis: string[] = [];
 const tzs: string[] = [];
